@@ -3,7 +3,7 @@
 # Meta Hacker Cup 2022 Qualification Round - Problem D. Second Flight
 # https://www.facebook.com/codingcompetitions/hacker-cup/2022/qualification-round/problems/D
 #
-# Time:  O(N + Q + M * sqrt(Q) )
+# Time:  O(N + Q + M * sqrt(Q))
 # Space: O(N + M + Q)
 #
 
