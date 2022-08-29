@@ -19,6 +19,5 @@ def second_meaning():
     result = [encode(i, S[0]) for i in range(N-1)]
     return "\n%s" % "\n".join(result)
 
-MAX_L = 8
 for case in range(int(input())):
     print('Case #%d: %s' % (case+1, second_meaning()))
