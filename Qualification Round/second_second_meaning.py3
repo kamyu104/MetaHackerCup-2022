@@ -1,4 +1,4 @@
-# Copyright (c) 2021 kamyu. All rights reserved.
+# Copyright (c) 2022 kamyu. All rights reserved.
 #
 # Meta Hacker Cup 2022 Qualification Round - Problem C2. Second Second Meaning
 # https://www.facebook.com/codingcompetitions/hacker-cup/2022/qualification-round/problems/C2
