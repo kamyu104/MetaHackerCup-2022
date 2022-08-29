@@ -4,7 +4,7 @@
 # https://www.facebook.com/codingcompetitions/hacker-cup/2022/qualification-round/problems/D
 #
 # Time:  O(N + (M + Q) * sqrt(M))
-# Space: O(N + M * sqrt(M) )
+# Space: O(N + M * sqrt(M))
 #
 
 from collections import Counter
