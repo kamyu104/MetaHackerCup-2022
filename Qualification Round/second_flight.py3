@@ -15,8 +15,8 @@ def second_flight():
         A -= 1
         B -= 1
         adj[A][B] = adj[B][A] = C
-    lookup = {}
     result = []
+    lookup = {}
     for _ in range(Q):
         X, Y = map(int, input().split())
         X -= 1
