@@ -23,14 +23,12 @@ def second_flight():
         Y -= 1
         if (len(adj[X]), X) > (len(adj[Y]), Y):
             X, Y = Y, X
-        if X*N+Y in lookup:
-            result.append(lookup[X*N+Y])
-            continue
-        cnt = sum(min(adj[X][Z], adj[Y][Z]) for Z in adj[X].keys() if Z in adj[Y])
-        if Y in adj[X]:
-            cnt += 2*adj[X][Y]
-        lookup[X*N+Y] = cnt
-        result.append(cnt)
+        if (X, Y) not in lookup:
+            cnt = sum(min(adj[X][Z], adj[Y][Z]) for Z in adj[X].keys() if Z in adj[Y])
+            if Y in adj[X]:
+                cnt += 2*adj[X][Y]
+            lookup[X, Y] = cnt
+        result.append(lookup[X, Y])
     return " ".join(map(str, result))
 
 for case in range(int(input())):
