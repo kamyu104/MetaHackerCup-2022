@@ -53,6 +53,6 @@ def second_second_friend():
         q = new_q
     return "Possible\n%s" % "\n".join(map(lambda x: "".join(x), grid))
 
-DIRECTIONS = [(0, 1), (1, 0), (0, -1), (-1, 0)]
+DIRECTIONS = ((0, 1), (1, 0), (0, -1), (-1, 0))
 for case in range(int(input())):
     print('Case #%d: %s' % (case+1, second_second_friend()))
