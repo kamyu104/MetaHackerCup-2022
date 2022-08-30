@@ -12,8 +12,8 @@ def second_friend():
     grid = [list(input()) for _ in range(R)]
     if  min(R, C) == 1 and any(x == '^' for row in grid for x in row):
         return "Impossible"
-    c = '.' if min(R, C) == 1 else '^'
-    result = (c*C for _ in range(R))
+    x = '.' if min(R, C) == 1 else '^'
+    result = (x*C for _ in range(R))
     return "Possible\n%s" % "\n".join(result)
 
 for case in range(int(input())):
