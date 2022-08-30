@@ -10,9 +10,9 @@
 def second_friend():
     R, C = map(int, input().split())
     grid = [list(input()) for _ in range(R)]
-    if (R == 1 and any(c == '^' for c in grid[0])) or (C == 1 and any(row[0] == '^' for row in grid)):
+    if  min(R, C) == 1 and any(x == '^' for row in grid for x in row):
         return "Impossible"
-    c = '^' if R != 1 and C != 1 else '.'
+    c = '^' if min(R, C) != 1 else '.'
     result = (c*C for _ in range(R))
     return "Possible\n%s" % "\n".join(result)
 
