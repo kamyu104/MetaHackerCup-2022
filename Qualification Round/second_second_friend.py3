@@ -4,7 +4,7 @@
 # https://www.facebook.com/codingcompetitions/hacker-cup/2022/qualification-round/problems/B2
 #
 # Time:  O(R * C)
-# Space: O(R + C)
+# Space: O(R * C)
 #
 
 def count(grid, r, c):
