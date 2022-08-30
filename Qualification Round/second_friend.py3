@@ -10,7 +10,7 @@
 def second_friend():
     R, C = map(int, input().split())
     grid = [list(input()) for _ in range(R)]
-    if (R == 1 and '^' in grid[0]) or (C == 1 and '^' in (row[0] for row in grid)):
+    if (R == 1 and any(c == '^' for c in grid[0])) or (C == 1 and any(row[0] == '^' for row in grid)):
         return "Impossible"
     c = '^' if R != 1 and C != 1 else '.'
     result = (c*C for _ in range(R))
