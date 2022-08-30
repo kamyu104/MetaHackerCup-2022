@@ -19,8 +19,8 @@ def count(grid, r, c):
 def second_second_friend():
     R, C = map(int, input().split())
     grid = [list(input()) for _ in range(R)]
-    lookup = [[False]*len(grid[0]) for r in range(len(grid))]
-    cnt = [[0]*len(grid[0]) for r in range(len(grid))]
+    lookup = [[False]*len(grid[0]) for _ in range(len(grid))]
+    cnt = [[0]*len(grid[0]) for _ in range(len(grid))]
     q = []
     for r in range(len(grid)):
         for c in range(len(grid[0])):

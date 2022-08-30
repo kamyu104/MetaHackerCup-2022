@@ -13,8 +13,10 @@ def second_friend():
     if min(R, C) == 1 and any(x == '^' for row in grid for x in row):
         return "Impossible"
     x = '.' if min(R, C) == 1 else '^'
-    result = (x*C for _ in range(R))
-    return "Possible\n%s" % "\n".join(result)
+    for r in range(len(grid)):
+        for c in range(len(grid[0])):
+            grid[r][c] = x
+    return "Possible\n%s" % "\n".join(map(lambda x: "".join(x), grid))
 
 for case in range(int(input())):
     print('Case #%d: %s' % (case+1, second_friend()))
