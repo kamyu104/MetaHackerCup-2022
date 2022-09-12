@@ -42,7 +42,7 @@ def lemonade_life():
         for v in range(len(hull)):
             if lookup[v]:
                 continue
-            if u == -1 or dist[u] > dist[v]:
+            if dist[u] > dist[v]:
                 u = v
         if u == dst:
             break
