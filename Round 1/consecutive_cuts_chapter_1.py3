@@ -14,11 +14,10 @@ def consecutive_cuts_chapter_1():
     N, K = map(int, input().split())
     A = list(map(int, input().split()))
     B = list(map(int, input().split()))
-    if B[0] in A:
-        i = A.index(B[0])
-        if check(A, B, i):
-            if (N == 2 and K%2 == int(i != 0)) or (N > 2 and K != int(i == 0)):
-                return "YES"
+    i = next((i for i, x in enumerate(A) if x ==(B[0])), -1)
+    if i != -1 and check(A, B, i):
+        if (N == 2 and K%2 == int(i != 0)) or (N > 2 and K != int(i == 0)):
+            return "YES"
     return "NO"
 
 for case in range(int(input())):
