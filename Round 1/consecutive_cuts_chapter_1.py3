@@ -19,9 +19,9 @@ def consecutive_cuts_chapter_1():
     i = A.index(B[0])
     if not check(A, B, i):
         return "NO"
-    if N == 2:
-        return "YES" if K%2 == int(i != 0) else "NO"
-    return "YES" if K != int(i == 0) else "NO"
+    if (N == 2 and K%2 == int(i != 0)) or (N > 2 and K != int(i == 0)):
+        return "YES"
+    return "NO"
 
 for case in range(int(input())):
     print('Case #%d: %s' % (case+1, consecutive_cuts_chapter_1()))
