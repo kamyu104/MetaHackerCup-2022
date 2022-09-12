@@ -3,8 +3,8 @@
 # Meta Hacker Cup 2022 Qualification Round - Problem B2. Watering Well - Chapter 2
 # https://www.facebook.com/codingcompetitions/hacker-cup/2022/round-1/problems/B2
 #
-# Time:  O(NlogN + |V|^2), |V| = MAX_X_Y^(2/3), pass in PyPy3 but Python3
-# Space: O(N + |V|)
+# Time:  O(NlogN + V^2), O(V) = O(MAX_X_Y^(2/3)), pass in PyPy3 but Python3
+# Space: O(N + V)
 #
 
 # Template: https://en.wikibooks.org/wiki/Algorithm_Implementation/Geometry/Convex_hull/Monotone_chain#Python
@@ -37,7 +37,7 @@ def lemonade_life():
     dist = [INF]*len(hull)
     dist[src] = 0
     lookup = [False]*len(hull)
-    for _ in range(len(hull)):  # Time: O(|V|^2), Space: O(|V|)
+    for _ in range(len(hull)):  # Time: O(V^2), Space: O(V)
         u = dst
         for v in range(len(hull)):
             if lookup[v]:
