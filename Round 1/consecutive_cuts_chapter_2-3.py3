@@ -25,9 +25,9 @@ def consecutive_cuts_chapter_2():
     A = list(map(int, input().split()))
     B = list(map(int, input().split()))
     base = [pow(p, N, MOD) for p in P]
-    got, expect = hash(A), hash(B)
+    got, want = hash(A), hash(B)
     for i in range(N if K else 1):
-        if got == expect and check(A, B, i):
+        if got == want and check(A, B, i):
             if (N == 2 and K%2 == int(i != 0)) or (N > 2 and K != int(i == 0)):
                 return "YES"
         got = update(got, base, A[i])
