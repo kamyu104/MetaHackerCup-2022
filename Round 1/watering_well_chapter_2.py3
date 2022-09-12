@@ -9,16 +9,16 @@
 
 def watering_well_chapter_2():
     N = int(input())
-    X_square_total = X_total = Y_square_total = Y_total = 0
+    A_square_total = A_total = B_square_total = B_total = 0
     for _ in range(N):
-        X, Y = list(map(int, input().split()))
-        X_total, X_square_total = (X_total+X)%MOD, (X_square_total+X**2)%MOD
-        Y_total, Y_square_total = (Y_total+Y)%MOD, (Y_square_total+Y**2)%MOD
+        A, B = list(map(int, input().split()))
+        A_total, A_square_total = (A_total+A)%MOD, (A_square_total+A**2)%MOD
+        B_total, B_square_total = (B_total+B)%MOD, (B_square_total+B**2)%MOD
     result = 0
     for _ in range(int(input())):
         X, Y = list(map(int, input().split()))
-        result = (result+(X_square_total-2*X_total*X+N*X**2))%MOD
-        result = (result+(Y_square_total-2*Y_total*Y+N*Y**2))%MOD
+        result = (result+(N*X**2-2*A_total*X+A_square_total))%MOD
+        result = (result+(N*Y**2-2*B_total*Y+B_square_total))%MOD
     return result
 
 MOD = 10**9+7
