@@ -11,14 +11,14 @@
 
 from functools import reduce
 
+def check(A, B, i):
+    return all(A[(i+j)%len(A)] == B[j]for j in range(len(A)))
+
 def hash(nums):
     return [reduce(lambda h, x: (h*p+x)%MOD, nums) for p in P]
 
 def update(h, base, x):
     return [(h[i]*P[i]+x*(1-base[i]))%MOD for i in range(len(P))]
-
-def check(A, B, i):
-    return all(A[(i+j)%len(A)] == B[j]for j in range(len(A)))
 
 def consecutive_cuts_chapter_2():
     N, K = map(int, input().split())
