@@ -39,12 +39,10 @@ def consecutive_cuts_chapter_2():
     it = KMP(A+A, B, 0)
     while True:
         i = next(it, -1)
-        if i == -1 or i >= N:
+        if not (0 <= i < (N if K else 1)):
             break
         if (N == 2 and K%2 == int(i != 0)) or (N > 2 and K != int(i == 0)):
             return "YES"
-        if K == 0:
-            break
     return "NO"
 
 for case in range(int(input())):
