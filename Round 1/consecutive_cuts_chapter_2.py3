@@ -36,9 +36,7 @@ def consecutive_cuts_chapter_2():
     N, K = map(int, input().split())
     A = list(map(int, input().split()))
     B = list(map(int, input().split()))
-    it = KMP(A+A, B, 0)
-    while True:
-        i = next(it, -1)
+    for i in KMP(A+A, B, 0):
         if not (0 <= i < (N if K else 1)):
             break
         if (N == 2 and K%2 == int(i != 0)) or (N > 2 and K != int(i == 0)):
