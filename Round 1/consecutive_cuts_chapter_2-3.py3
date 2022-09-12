@@ -1,6 +1,6 @@
 # Copyright (c) 2022 kamyu. All rights reserved.
 #
-# Meta Hacker Cup 2022 Qualification Round - Problem A2. Consecutive Cuts - Chapter 2
+# Meta Hacker Cup 2022 Round 1 - Problem A2. Consecutive Cuts - Chapter 2
 # https://www.facebook.com/codingcompetitions/hacker-cup/2022/round-1/problems/A2
 #
 # Time:  O(N)
