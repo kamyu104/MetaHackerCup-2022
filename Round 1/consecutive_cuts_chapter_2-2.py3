@@ -27,7 +27,7 @@ def consecutive_cuts_chapter_2():
     A = list(map(int, input().split()))
     B = list(map(int, input().split()))
     z = z_function(B+A+A)
-    for i in range(N if K else 1):
+    for i in range(N):
         if z[i+N] < N:
             continue
         if (N == 2 and K%2 == int(i != 0)) or (N > 2 and K != int(i == 0)):
