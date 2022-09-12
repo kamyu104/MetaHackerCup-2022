@@ -1,7 +1,7 @@
 # Copyright (c) 2022 kamyu. All rights reserved.
 #
-# Meta Hacker Cup 2022 Qualification Round - Problem B2. Watering Well - Chapter 2
-# https://www.facebook.com/codingcompetitions/hacker-cup/2022/round-1/problems/B2
+# Meta Hacker Cup 2022 Qualification Round - Problem C. Lemonade Life
+# https://www.facebook.com/codingcompetitions/hacker-cup/2022/round-1/problems/C
 #
 # Time:  O(NlogN + V^2), O(V) = O(MAX_X_Y^(2/3)), pass in PyPy3 but Python3
 # Space: O(N + V)
