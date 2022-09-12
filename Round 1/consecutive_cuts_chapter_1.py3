@@ -17,10 +17,9 @@ def consecutive_cuts_chapter_1():
     if A[0] not in B:
         return "NO"
     i = A.index(B[0])
-    if not check(A, B, i):
-        return "NO"
-    if (N == 2 and K%2 == int(i != 0)) or (N > 2 and K != int(i == 0)):
-        return "YES"
+    if check(A, B, i):
+        if (N == 2 and K%2 == int(i != 0)) or (N > 2 and K != int(i == 0)):
+            return "YES"
     return "NO"
 
 for case in range(int(input())):
