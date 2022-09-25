@@ -26,16 +26,16 @@ def balance_sheet():
     events = []
     for i in range(N):
         A, B, X, Y = map(int, input().split())
-        events.append((A, X, i, 'B'))
-        events.append((B, Y, i, 'S'))
+        events.append((A, X, 'B', i))
+        events.append((B, Y, 'S', i))
     events.sort(reverse=True)
     P = [[0] for _ in range(N)]
     curr = []
-    for idx, (d, p, i, t) in enumerate(events):
+    for idx, (d, p, t, i) in enumerate(events):
         if t == 'B':
             curr = topk(curr, [x+p for x in P[i]])
         else:
-            P[i] = topk(P[i], [x-p for x in curr if x > p])
+            P[i] = topk(P[i], [x-p for x in curr])
         if idx+1 < len(events) and events[idx+1][0] != d:
             curr.clear()
     return reduce((lambda x, y:(x+y)%MOD), reduce(topk, P), 0)
