@@ -85,9 +85,8 @@ def worklife_balance_chapter_1():
         if total_left > total_right:
             left, right = right, left
             total_left, total_right = total_right, total_left
-        diff = total_right-total_left
-        total = min(case1(left, right, diff), case2(left, right, diff))
-        result += total if total != INF else -1
+        Q = min(case1(left, right, total_right-total_left), case2(left, right, total_right-total_left))
+        result += Q if Q != INF else -1
     return result
 
 INF = float("inf")
