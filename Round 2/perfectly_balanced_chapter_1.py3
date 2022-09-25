@@ -3,7 +3,7 @@
 # Meta Hacker Cup 2022 Round 2 - Problem A1. Perfectly Balanced - Chapter 1
 # https://www.facebook.com/codingcompetitions/hacker-cup/2022/round-2/problems/A1
 #
-# Time:  O(N)
+# Time:  O(N + Q)
 # Space: O(N)
 #
 
