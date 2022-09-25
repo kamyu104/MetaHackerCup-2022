@@ -27,7 +27,7 @@ def perfectly_balanced_chapter_1():
             continue
         cnt1 = [prefix[(L+R)//2][i]-prefix[L][i] for i in range(26)]
         cnt2 = [prefix[R+1][i]-prefix[(L+R)//2][i] for i in range(26)]
-        if sum(abs(cnt1[i]-cnt2[i]) for i in range(26)) == 1:
+        if sum(abs(cnt2[i]-cnt1[i]) for i in range(26)) == 1:
             result += 1
             continue
     return result
