@@ -36,33 +36,33 @@ def swap(left, right, x, y, cnt):
 
 def case1(left, right, diff):
     total = 0
-    cnt = min(left[0], right[2], diff//4)
+    cnt = min(left[0], right[2], diff//2)
     swap(left, right, 0, 2, cnt)
-    diff -= cnt*4
+    diff -= cnt*2
     total += cnt
-    cnt = min(left[0], right[1], diff//2)
+    cnt = min(left[0], right[1], diff)
     swap(left, right, 0, 1, cnt)
-    diff -= cnt*2
+    diff -= cnt
     total += cnt
-    cnt = min(left[1], right[2], diff//2)
+    cnt = min(left[1], right[2], diff)
     swap(left, right, 1, 2, cnt)
-    diff -= cnt*2
+    diff -= cnt
     total += cnt
     return total if diff == 0 else INF
 
 def case2(left, right, diff):
     total = 0
-    cnt = min(left[0], right[2], ceil_divide(diff, 4))
+    cnt = min(left[0], right[2], ceil_divide(diff, 2))
     swap(left, right, 0, 2, cnt)
-    diff -= cnt*4
+    diff -= cnt*2
     total += cnt
-    cnt = min(left[1], right[0], (-diff)//2 if diff < 0 else 0)
+    cnt = min(left[1], right[0], max(-diff, 0))
     swap(left, right, 1, 0, cnt)
-    diff += cnt*2
+    diff += cnt
     total += cnt
-    cnt = min(left[2], right[1], (-diff)//2 if diff < 0 else 0)
+    cnt = min(left[2], right[1], max(-diff, 0))
     swap(left, right, 2, 1, cnt)
-    diff += cnt*2
+    diff += cnt
     total += cnt
     return total if diff == 0 else INF
 
@@ -75,6 +75,7 @@ def worklife_balance_chapter_1():
             return 0
         if diff%2:
             return -1
+        diff //= 2
         if diff < 0:
             diff = -diff
             left, right = right, left
