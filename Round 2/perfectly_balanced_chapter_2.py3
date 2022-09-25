@@ -35,12 +35,8 @@ class BIT(object):  # 0-indexed.
 
 def hash(lookup, h_set, x):
     if x not in lookup:
-        while True:
-            h = randint(0, MOD-1)
-            if h not in h_set:
-                h_set.add(h)
-                lookup[x] = h
-                break
+        lookup[x] = randint(0, MOD-1)
+        h_set.add(lookup[x])
     return lookup[x]
 
 def perfectly_balanced_chapter_2():
