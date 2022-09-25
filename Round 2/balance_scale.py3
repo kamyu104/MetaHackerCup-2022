@@ -3,10 +3,10 @@
 # Meta Hacker Cup 2022 Round 2 - Problem C. Balance Scale
 # https://www.facebook.com/codingcompetitions/hacker-cup/2022/round-2/problems/C
 #
-# Time:   precompute: O(MAX_N * MAX_C)
-#         runtime:    O(N)
-# Space:  precompute: O(MAX_N * MAX_C)
-#         runtime:    O(1)
+# Time:  precompute: O(MAX_N * MAX_C)
+#        runtime:    O(N)
+# Space: precompute: O(MAX_N * MAX_C)
+#        runtime:    O(1)
 #
 
 def add(a, b):
