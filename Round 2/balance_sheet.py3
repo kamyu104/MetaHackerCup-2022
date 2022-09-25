@@ -30,16 +30,14 @@ def balance_sheet():
         events.append((B, Y, i, 'S'))
     events.sort(reverse=True)
     P = [[0] for _ in range(N)]
-    prev = -1
     curr = []
-    for d, p, i, t in events:
-        if d != prev:
-            curr.clear()
+    for idx, (d, p, i, t) in enumerate(events):
         if t == 'B':
             curr = topk(curr, [x+p for x in P[i]])
         else:
             P[i] = topk(P[i], [x-p for x in curr if x > p])
-        prev = d
+        if idx+1 < len(events) and events[idx+1][0] != d:
+            curr.clear()
     return reduce((lambda x, y:(x+y)%MOD), reduce(topk, P), 0)
 
 MOD = 10**9+7
