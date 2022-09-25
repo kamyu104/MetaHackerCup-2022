@@ -36,12 +36,11 @@ def inv(n):
 
 def balance_scale():
     N, K = map(int, input().split())
-    K += 1
     C_W = [tuple(map(int, input().split())) for _ in range(N)]
     less = sum(c for c, w in C_W if w < C_W[0][1])
     equal = sum(c for c, w in C_W if w == C_W[0][1])
     total = sum(c for c, _ in C_W)
-    return mult(mult(sub(nCr(less+equal, K), nCr(less, K)), mult(C_W[0][0], inv(equal))), nCr(total, K, True))
+    return mult(mult(sub(nCr(less+equal, K+1), nCr(less, K+1)), mult(C_W[0][0], inv(equal))), nCr(total, K+1, True))
 
 FACT, INV, INV_FACT = [[1]*2 for _ in range(3)]
 MOD = 10**9+7
