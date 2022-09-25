@@ -25,33 +25,18 @@ class BIT(object):  # 0-indexed.
             i -= (i & -i)
         return ret
 
-def divide(a, b, ceil):
-    return (a+b-1)//b if ceil else a//b
-
 def swap(left, right, x, y, cnt):
     left[x] -= cnt
     right[x] += cnt
     right[y] -= cnt
     left[y] += cnt
 
-def update(total, diff, left, right, x, y, ceil=False):
-    cnt = min(left[x], right[y], max(divide(diff, y-x, ceil), 0))
+def update(total, diff, left, right, x, y):
+    cnt = min(left[x], right[y], diff//(y-x))
     swap(left, right, x, y, cnt)
     diff -= cnt*(y-x)
     total += cnt
     return total, diff
-
-def case1(left, right, diff):
-    total, diff = update(0, diff, left, right, 0, 2)
-    total, diff = update(total, diff, left, right, 0, 1)
-    total, diff = update(total, diff, left, right, 1, 2)
-    return total if diff == 0 else INF
-
-def case2(left, right, diff):
-    total, diff = update(0, diff, left, right, 0, 2, ceil=True)
-    total, diff = update(total, diff, left, right, 1, 0)
-    total, diff = update(total, diff, left, right, 2, 1)
-    return total if diff == 0 else INF
 
 def work_life_balance_chapter_1():
     def query(Z):
@@ -66,8 +51,10 @@ def work_life_balance_chapter_1():
         if diff < 0:
             diff = -diff
             left, right = right, left
-        Q = min(case1(left[:], right[:], diff), case2(left[:], right[:], diff))
-        return Q if Q != INF else -1
+        total, diff = update(0, diff, left, right, 0, 2)
+        total, diff = update(total, diff, left, right, 0, 1)
+        total, diff = update(total, diff, left, right, 1, 2)
+        return total if diff == 0 else -1
 
     N, M = map(int, input().split())
     A = list(map(lambda x: int(x)-1, input().split()))
