@@ -73,6 +73,8 @@ def worklife_balance_chapter_1():
         diff = sum((i+1)*right[i] for i in range(3))-sum((i+1)*left[i] for i in range(3))
         if diff == 0:
             return 0
+        if diff%2:
+            return -1
         if diff < 0:
             diff = -diff
             left, right = right, left
