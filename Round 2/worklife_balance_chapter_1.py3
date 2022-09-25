@@ -86,8 +86,8 @@ def worklife_balance_chapter_1():
             left, right = right, left
             total_left, total_right = total_right, total_left
         diff = total_right-total_left
-        move = min(case1(left, right, diff), case2(left, right, diff))
-        result += move if move != INF else -1
+        total = min(case1(left, right, diff), case2(left, right, diff))
+        result += total if total != INF else -1
     return result
 
 INF = float("inf")
