@@ -38,7 +38,7 @@ def balance_sheet():
             dp[i] = merge(dp[i], [x-p for x in buy])
         if idx+1 < len(events) and events[idx+1][0] != d:
             buy.clear()
-    return reduce((lambda x, y:(x+y)%MOD), reduce(merge, dp), 0)
+    return reduce((lambda x, y: (x+y)%MOD), reduce(merge, dp), 0)
 
 MOD = 10**9+7
 for case in range(int(input())):
