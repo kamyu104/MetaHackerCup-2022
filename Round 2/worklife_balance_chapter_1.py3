@@ -7,9 +7,6 @@
 # Space: O(N)
 #
 
-def ceil_divide(a, b):
-    return (a+b-1)//b
-
 class BIT(object):  # 0-indexed.
     def __init__(self, n):
         self.__bit = [0]*(n+1)  # Extra one for dummy node.
@@ -28,42 +25,32 @@ class BIT(object):  # 0-indexed.
             i -= (i & -i)
         return ret
 
+def divide(a, b, ceil):
+    return (a+b-1)//b if ceil else a//b
+
 def swap(left, right, x, y, cnt):
     left[x] -= cnt
     right[x] += cnt
     right[y] -= cnt
     left[y] += cnt
 
+def update(total, diff, left, right, x, y, ceil=False):
+    cnt = min(left[x], right[y], max(divide(diff, y-x, ceil), 0))
+    swap(left, right, x, y, cnt)
+    diff -= cnt*(y-x)
+    total += cnt
+    return total, diff
+
 def case1(left, right, diff):
-    total = 0
-    cnt = min(left[0], right[2], diff//2)
-    swap(left, right, 0, 2, cnt)
-    diff -= cnt*2
-    total += cnt
-    cnt = min(left[0], right[1], diff)
-    swap(left, right, 0, 1, cnt)
-    diff -= cnt
-    total += cnt
-    cnt = min(left[1], right[2], diff)
-    swap(left, right, 1, 2, cnt)
-    diff -= cnt
-    total += cnt
+    total, diff = update(0, diff, left, right, 0, 2)
+    total, diff = update(total, diff, left, right, 0, 1)
+    total, diff = update(total, diff, left, right, 1, 2)
     return total if diff == 0 else INF
 
 def case2(left, right, diff):
-    total = 0
-    cnt = min(left[0], right[2], ceil_divide(diff, 2))
-    swap(left, right, 0, 2, cnt)
-    diff -= cnt*2
-    total += cnt
-    cnt = min(left[1], right[0], max(-diff, 0))
-    swap(left, right, 1, 0, cnt)
-    diff += cnt
-    total += cnt
-    cnt = min(left[2], right[1], max(-diff, 0))
-    swap(left, right, 2, 1, cnt)
-    diff += cnt
-    total += cnt
+    total, diff = update(0, diff, left, right, 0, 2, ceil=True)
+    total, diff = update(total, diff, left, right, 1, 0)
+    total, diff = update(total, diff, left, right, 2, 1)
     return total if diff == 0 else INF
 
 def worklife_balance_chapter_1():
