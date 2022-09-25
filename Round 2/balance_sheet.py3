@@ -10,7 +10,7 @@
 from functools import reduce
 
 def balance_sheet():
-    def topk(a, b):
+    def merge(a, b):
         result = []
         i = j = 0
         while (i < len(a) or j < len(b)) and len(result) < K:
@@ -29,16 +29,16 @@ def balance_sheet():
         events.append((A, X, 'B', i))
         events.append((B, Y, 'S', i))
     events.sort(reverse=True)
-    P = [[0] for _ in range(N)]
-    curr = []
+    dp = [[0] for _ in range(N)]
+    buy = []
     for idx, (d, p, t, i) in enumerate(events):
         if t == 'B':
-            curr = topk(curr, [x+p for x in P[i]])
+            buy = merge(buy, [x+p for x in dp[i]])
         else:
-            P[i] = topk(P[i], [x-p for x in curr])
+            dp[i] = merge(dp[i], [x-p for x in buy])
         if idx+1 < len(events) and events[idx+1][0] != d:
-            curr.clear()
-    return reduce((lambda x, y:(x+y)%MOD), reduce(topk, P), 0)
+            buy.clear()
+    return reduce((lambda x, y:(x+y)%MOD), reduce(merge, dp), 0)
 
 MOD = 10**9+7
 for case in range(int(input())):
