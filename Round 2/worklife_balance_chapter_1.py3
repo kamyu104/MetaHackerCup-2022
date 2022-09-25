@@ -1,7 +1,7 @@
 # Copyright (c) 2022 kamyu. All rights reserved.
 #
-# Meta Hacker Cup 2022 Round 2 - Problem A1. Perfectly Balanced - Chapter 1
-# https://www.facebook.com/codingcompetitions/hacker-cup/2022/round-2/problems/A1
+# Meta Hacker Cup 2022 Round 2 - Problem D. Work-Life Balance - Chapter 1
+# https://www.facebook.com/codingcompetitions/hacker-cup/2022/round-2/problems/D1
 #
 # Time:  O((N + M) * logN)
 # Space: O(N)
@@ -91,7 +91,7 @@ def worklife_balance_chapter_1():
         X, Y, Z = map(lambda x: int(x)-1, input().split())
         bits[A[X]].add(X, -1)
         A[X] = Y
-        bits[A[X]].add(X, +1)
+        bits[A[X]].add(X, 1)
         result += query(Z)
     return result
 
