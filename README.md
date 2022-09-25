@@ -1,10 +1,11 @@
-# [MetaHackerCup-2022](https://www.facebook.com/hackercup/past_rounds/) ![Language](https://img.shields.io/badge/language-Python3-orange.svg) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE) ![Progress](https://img.shields.io/badge/progress-11%20%2F%2011-ff69b4.svg) ![Visitors](https://visitor-badge.laobi.icu/badge?page_id=kamyu104.metahackercup.2022)
+# [MetaHackerCup-2022](https://www.facebook.com/hackercup/past_rounds/) ![Language](https://img.shields.io/badge/language-Python3-orange.svg) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE) ![Progress](https://img.shields.io/badge/progress-15%20%2F%2017-ff69b4.svg) ![Visitors](https://visitor-badge.laobi.icu/badge?page_id=kamyu104.metahackercup.2022)
 
 Python3 solutions of Meta Hacker Cup 2022. Solution begins with `*` means it will get TLE in the largest data set (total computation amount > `10^8`, which is not friendly for Python3 to solve in 5 ~ 15 seconds). A `6-minute` timer is set for uploading the result this year.
 
 * [Hacker Cup 2021](https://github.com/kamyu104/FacebookHackerCup-2021)
 * [Qualification Round](https://github.com/kamyu104/MetaHackerCup-2022#qualification-round)
 * [Round 1](https://github.com/kamyu104/MetaHackerCup-2022#round-1)
+* [Round 2](https://github.com/kamyu104/MetaHackerCup-2022#round-2)
 
 ## Qualification Round
 | # | Title | Solution | Time | Space | Difficulty | Tag | Note |
@@ -24,3 +25,13 @@ Python3 solutions of Meta Hacker Cup 2022. Solution begins with `*` means it wil
 |B1| [Watering Well - Chapter 1](https://www.facebook.com/codingcompetitions/hacker-cup/2022/round-1/problems/B1)| [Python3](./Round%201/watering_well_chapter_1.py3) | _O(N + Q + min(N * Q, MAX_A_B_X_Y^2))_ | _O(min(N + Q, MAX_A_B_X_Y))_ | Easy | | Math, Freq Table |
 |B2| [Watering Well - Chapter 2](https://www.facebook.com/codingcompetitions/hacker-cup/2022/round-1/problems/B2)| [Python3](./Round%201/watering_well_chapter_2.py3) | _O(N + Q)_ | _O(1)_ | Easy | | Math |
 |C| [Lemonade Life](https://www.facebook.com/codingcompetitions/hacker-cup/2022/round-1/problems/C)| [PyPy3](./Round%201/lemonade_life.py3) | _O(NlogN + V^2)_ | _O(N + V)_ | Hard | | Geometry, Convex Hull, Monotone Chain Algorithm, Graph, Dijkstra's Algorithm |
+
+## Round 2
+| # | Title | Solution | Time | Space | Difficulty | Tag | Note |
+|---| ----- | -------- | ---- | ----- | ---------- | --- | ---- |
+|A1| [Perfectly Balanced - Chapter 1](https://www.facebook.com/codingcompetitions/hacker-cup/2022/round-2/problems/A1)| [Python3](./Round%202/perfectly_balanced_chapter_1.py3) | _O(N + Q)_ | _O(N)_ | Easy | | Prefix Sum |
+|A2| [Perfectly Balanced - Chapter 2](https://www.facebook.com/codingcompetitions/hacker-cup/2022/round-2/problems/A2)| [Python3](./Round%202/perfectly_balanced_chapter_2.py3) | _O((N + Q) * logN)_ | _O(N)_ | Medium | | Hash, Fenwick Tree |
+|B| [Balance Sheet](https://www.facebook.com/codingcompetitions/hacker-cup/2022/round-2/problems/B)| [Python3](./Round%202/balance_sheet.py3) | _O(NlogN + N * K)_ | _O(N * K)_ | Medium | | Sort, Greedy, DP |
+|C| [Balance Scale](https://www.facebook.com/codingcompetitions/hacker-cup/2022/round-2/problems/C)| [Python3](./Round%202/balance_scale.py3) | precompute: _O(MAX\_N * MAX\_C)_<br>runtime: _O(N)_ | precompute: _O(MAX\_N * MAX\_C)_<br>runtime: _O(1)_ | Easy | | Combinatorics, Probability |
+|D1| [Work-Life Balance - Chapter 1](https://www.facebook.com/codingcompetitions/hacker-cup/2022/round-2/problems/D1)| | | | Hard | | |
+|D2| [Work-Life Balance - Chapter 2](https://www.facebook.com/codingcompetitions/hacker-cup/2022/round-2/problems/D2)| | | | Hard | | |
