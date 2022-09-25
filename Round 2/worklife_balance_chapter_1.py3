@@ -67,6 +67,18 @@ def case2(left, right, diff):
     return total if diff == 0 else INF
 
 def worklife_balance_chapter_1():
+    def query(Z):
+        left = [bits[i].query(Z) for i in range(3)]
+        right = [bits[i].query(N-1)-left[i] for i in range(3)]
+        diff = sum((i+1)*right[i] for i in range(3))-sum((i+1)*left[i] for i in range(3))
+        if diff == 0:
+            return 0
+        if diff < 0:
+            diff = -diff
+            left, right = right, left
+        Q = min(case1(left, right, diff), case2(left, right, diff))
+        return Q if Q != INF else -1
+
     N, M = map(int, input().split())
     A = list(map(lambda x: int(x)-1, input().split()))
     bits = [BIT(N) for _ in range(3)]
@@ -78,15 +90,7 @@ def worklife_balance_chapter_1():
         bits[A[X]].add(X, -1)
         A[X] = Y
         bits[A[X]].add(X, +1)
-        left = [bits[i].query(Z) for i in range(3)]
-        right = [bits[i].query(N-1)-left[i] for i in range(3)]
-        total_left = sum((i+1)*left[i] for i in range(3))
-        total_right = sum((i+1)*right[i] for i in range(3))
-        if total_left > total_right:
-            left, right = right, left
-            total_left, total_right = total_right, total_left
-        Q = min(case1(left, right, total_right-total_left), case2(left, right, total_right-total_left))
-        result += Q if Q != INF else -1
+        result += query(Z)
     return result
 
 INF = float("inf")
