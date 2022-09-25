@@ -48,15 +48,15 @@ def work_life_balance_chapter_2():
         if diff%2:
             return -1
         diff //= 2
-        x = 0
+        x, y = 0, 1
         if diff < 0:
             diff = -diff
-            x ^= 1
-        if left[x] < diff or right[x^1] < diff:
+            x, y = y, x
+        if left[x] < diff or right[y] < diff:
             return -1
         l = bits[x].kth_element(left[x]-diff)
-        r = bits[x^1].kth_element(left[x^1]+diff)
-        return (bits2[x^1].query(r)-bits2[x^1].query(Z)) - (bits2[x].query(Z)-bits2[x].query(l))
+        r = bits[y].kth_element(left[y]+diff)
+        return (bits2[y].query(r)-bits2[y].query(Z)) - (bits2[x].query(Z)-bits2[x].query(l))
 
     N, M = map(int, input().split())
     A = list(map(lambda x: int(x)-1, input().split()))
