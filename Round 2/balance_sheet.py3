@@ -40,10 +40,7 @@ def balance_sheet():
         else:
             P[i] = topk(P[i], [x-p for x in curr if x > p])
         prev = d
-    curr.clear()
-    for i in range(N):
-        curr = topk(curr, P[i])
-    return reduce((lambda x, y:(x+y)%MOD), curr, 0)
+    return reduce((lambda x, y:(x+y)%MOD), reduce(topk, P), 0)
 
 MOD = 10**9+7
 for case in range(int(input())):
