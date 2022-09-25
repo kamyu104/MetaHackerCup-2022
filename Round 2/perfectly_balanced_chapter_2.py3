@@ -73,6 +73,6 @@ def perfectly_balanced_chapter_2():
     return result
 
 seed(0)
-MOD = (1<<64)-59
+MOD = (1<<64)-59  # max 64-bit prime
 for case in range(int(input())):
     print('Case #%d: %s' % (case+1, perfectly_balanced_chapter_2()))
