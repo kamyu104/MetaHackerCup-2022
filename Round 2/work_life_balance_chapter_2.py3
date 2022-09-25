@@ -56,7 +56,7 @@ def work_life_balance_chapter_2():
             return -1
         l = bits[x].kth_element(left[x]-diff)
         r = bits[y].kth_element(left[y]+diff)
-        return (bits2[y].query(r)-bits2[y].query(Z)) - (bits2[x].query(Z)-bits2[x].query(l))
+        return (bits2[y].query(r)-bits2[y].query(Z))-(bits2[x].query(Z)-bits2[x].query(l))
 
     N, M = map(int, input().split())
     A = list(map(lambda x: int(x)-1, input().split()))
