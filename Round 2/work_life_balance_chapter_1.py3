@@ -66,7 +66,7 @@ def work_life_balance_chapter_1():
         if diff < 0:
             diff = -diff
             left, right = right, left
-        Q = min(case1(left, right, diff), case2(left, right, diff))
+        Q = min(case1(left[:], right[:], diff), case2(left[:], right[:], diff))
         return Q if Q != INF else -1
 
     N, M = map(int, input().split())
