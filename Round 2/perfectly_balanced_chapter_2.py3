@@ -52,8 +52,9 @@ def perfectly_balanced_chapter_2():
         if args[0] == 1:
             _, X, Y = args
             X -= 1
-            bit.add(X, sub(hash(lookup, h_set, Y), hash(lookup, h_set, A[X])))
+            bit.add(X, -hash(lookup, h_set, A[X]))
             A[X] = Y
+            bit.add(X, +hash(lookup, h_set, A[X]))
             continue
         _, L, R = args
         L -= 1
