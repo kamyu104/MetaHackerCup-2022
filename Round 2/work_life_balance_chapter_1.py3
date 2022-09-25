@@ -53,7 +53,7 @@ def case2(left, right, diff):
     total, diff = update(total, diff, left, right, 2, 1)
     return total if diff == 0 else INF
 
-def worklife_balance_chapter_1():
+def work_life_balance_chapter_1():
     def query(Z):
         left = [bits[i].query(Z) for i in range(3)]
         right = [bits[i].query(N-1)-left[i] for i in range(3)]
@@ -85,4 +85,4 @@ def worklife_balance_chapter_1():
 
 INF = float("inf")
 for case in range(int(input())):
-    print('Case #%d: %s' % (case+1, worklife_balance_chapter_1()))
+    print('Case #%d: %s' % (case+1, work_life_balance_chapter_1()))

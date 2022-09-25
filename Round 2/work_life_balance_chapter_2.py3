@@ -38,7 +38,7 @@ class BIT(object):  # 0-indexed.
             pow_i >>= 1
         return (pos+1)-1  # 0-indexed, return min pos s.t. total >= k if pos exists else n
 
-def worklife_balance_chapter_2():
+def work_life_balance_chapter_2():
     def query(Z):
         left = [bits[i].query(Z) for i in range(2)]
         right = [bits[i].query(N-1)-left[i] for i in range(2)]
@@ -78,4 +78,4 @@ def worklife_balance_chapter_2():
 
 INF = float("inf")
 for case in range(int(input())):
-    print('Case #%d: %s' % (case+1, worklife_balance_chapter_2()))
+    print('Case #%d: %s' % (case+1, work_life_balance_chapter_2()))
