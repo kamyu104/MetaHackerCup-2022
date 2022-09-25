@@ -7,6 +7,8 @@
 # Space: O(N)
 #
 
+# Template:
+# https://github.com/kamyu104/GoogleKickStart-2021/blob/main/Round%20F/festival.py
 class BIT(object):  # 0-indexed.
     def __init__(self, n):
         self.__bit = [0]*(n+1)  # Extra one for dummy node.
