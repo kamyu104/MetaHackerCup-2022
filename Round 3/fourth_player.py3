@@ -6,7 +6,7 @@
 # Time:  O(NlogN)
 # Space: O(N)
 #
-    
+
 def fourth_player():
     N = int(input())
     A, B = [], []
