@@ -32,6 +32,5 @@ def fourth_player():
         B, A = new_A, new_B
     return len(A)
 
-MOD = 10**9+7
 for case in range(int(input())):
     print('Case #%d: %s' % (case+1, fourth_player()))
