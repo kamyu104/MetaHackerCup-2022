@@ -28,7 +28,7 @@ def second_mistake():
             V = input()
             h = reduce(lambda h, i: add(h, mult(ord(V[i])-ord('a'), pow(i))), range(len(V)), 0)
             result += sum(f(add(h, mult(ord(x)-ord(c), pow(i))), i) for i, c in enumerate(V) for x in META if x != c)
-        return result
+        return result//2
 
     def f(h, i):
         cnt[h, i] += 1
@@ -40,7 +40,7 @@ def second_mistake():
 
     cnt = Counter()
     find_diff_1_hashes(f)
-    return find_diff_1_hashes(g)//2
+    return find_diff_1_hashes(g)
 
 MOD = (1<<64)-59  # largest 64-bit prime
 BASE = 113
