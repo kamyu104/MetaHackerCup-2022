@@ -15,8 +15,8 @@ def first_time_chapter_1():
         if len(group[a]) > len(group[b]):
             group[a], group[b]
         cnt = len(group[a])+len(group[b])
-        group[b] |= group[a]
-        group[a].clear()
+        while group[a]:
+            group[b].add(group[a].pop())
         return cnt-len(group[b])
 
     N, M, K = map(int, input().split())
