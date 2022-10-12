@@ -42,7 +42,7 @@ Python3 solutions of Meta Hacker Cup 2022. Solution begins with `*` means it wil
 |---| ----- | -------- | ---- | ----- | ---------- | --- | ---- |
 |A| [Fourth Player](https://www.facebook.com/codingcompetitions/hacker-cup/2022/round-3/problems/A)| [Python3](./Round%203/fourth_player.py3) | _O(NlogN)_ | _O(N)_ | Medium | | Games, Greedy |
 |B| [Third Trie](https://www.facebook.com/codingcompetitions/hacker-cup/2022/round-3/problems/B)| [Python3](./Round%203/third_trie.py3) | _O(N * M)_ | _O(T)_ | Easy | | Trie, Combinatorics |
-|C| [Second Mistake](https://www.facebook.com/codingcompetitions/hacker-cup/2022/round-3/problems/C)| [Python3](./Round%203/second_mistake.py3) | _O(3 * L * (N + Q))_ | _O(3 * L * N)_ | Easy | | Hash |
+|C| [Second Mistake](https://www.facebook.com/codingcompetitions/hacker-cup/2022/round-3/problems/C)| [Python3](./Round%203/second_mistake.py3) | _O(3 * L * (N + Q))_ | _O(3 * L * N)_ | Easy | | Rabin Karp Algorithm, Hash Table |
 |D1| [First Time Chapter 1](https://www.facebook.com/codingcompetitions/hacker-cup/2022/round-3/problems/D1)| [Python3](./Round%203/first_time_chapter_1.py3) | _O(M + NlogN)_ | _O(N)_ | Medium | | Unordered Set |
 |D2| [First Time Chapter 2](https://www.facebook.com/codingcompetitions/hacker-cup/2022/round-3/problems/D2)| [Python3](./Round%203/first_time_chapter_2.py3) | _O(M + NlogN)_ | _O(N)_ | Hard | | Unordered Set, Segment Tree |
 |E1| [Zero Crossings - Chapter 1](https://www.facebook.com/codingcompetitions/hacker-cup/2022/round-3/problems/E1)| | | | Hard | | |
