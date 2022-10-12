@@ -14,10 +14,10 @@ def first_time_chapter_1():
     def merge(a, b):
         if len(group[a]) > len(group[b]):
             group[a], group[b]
-        cnt = sum(x in group[b] for x in group[a])
+        cnt = len(group[a])+len(group[b])
         group[b] |= group[a]
         group[a].clear()
-        return cnt
+        return cnt-len(group[b])
 
     N, M, K = map(int, input().split())
     group = [{i//K} for i in range(N)]
