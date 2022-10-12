@@ -36,7 +36,7 @@ def second_mistake():
         return 0
 
     def g(h, i):
-        return cnt[h]-cnt[h, i] if h in cnt else 0
+        return (cnt[h] if h in cnt else 0)-(cnt[h, i] if (h, i) in cnt else 0)
 
     cnt = Counter()
     find_diff_1_hashes(f)
