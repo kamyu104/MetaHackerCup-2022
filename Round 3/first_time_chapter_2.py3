@@ -51,7 +51,7 @@ def first_time_chapter_2():
     group = [{i} for i in range(N)]
     st = SegmentTree(N,
                      build_fn=lambda i: i,
-                     query_fn=lambda x, y: y if x is None else x if y is None else gcd(x, y))
+                     query_fn=gcd)
     result = [INF]*(N+1)
     result[1] = 0
     for t in range(1, M+1):
