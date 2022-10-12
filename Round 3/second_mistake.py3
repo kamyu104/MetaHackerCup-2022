@@ -39,8 +39,7 @@ def second_mistake():
         return (cnt[h] if h in cnt else 0)-(cnt[h, i] if (h, i) in cnt else 0)
 
     cnt = Counter()
-    find_diff_1_hashes(f)
-    return find_diff_1_hashes(g)
+    return find_diff_1_hashes(f)+find_diff_1_hashes(g)
 
 MOD = (1<<64)-59  # largest 64-bit prime
 BASE = 113
