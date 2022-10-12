@@ -38,7 +38,7 @@ class SegmentTree(object):
 def first_time_chapter_2():
     def merge(a, b):  # Total Time: O(NlogN)
         if len(group[a]) > len(group[b]):
-            group[a], group[b]
+            group[a], group[b] = group[b], group[a]
         for x in group[a]:
             if x-1 in group[b]:
                 st.update(x, 0)
