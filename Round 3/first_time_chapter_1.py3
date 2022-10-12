@@ -21,7 +21,7 @@ def first_time_chapter_1():
             else:
                 group[b].add(x)
         return cnt
-    
+
     N, M, K = map(int, input().split())
     group = [{i//K} for i in range(N)]
     result = -1
