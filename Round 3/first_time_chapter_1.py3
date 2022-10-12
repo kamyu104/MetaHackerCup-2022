@@ -11,7 +11,7 @@ def ceil_divide(a, b):
     return (a+b-1)//b
 
 def first_time_chapter_1():
-    def merge(a, b):
+    def merge(a, b):  # Total Time: O(NlogN)
         if len(group[a]) > len(group[b]):
             group[a], group[b]
         cnt = len(group[a])+len(group[b])
