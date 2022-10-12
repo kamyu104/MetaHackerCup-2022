@@ -4,16 +4,14 @@
 # https://www.facebook.com/codingcompetitions/hacker-cup/2022/round-3/problems/C
 #
 # Time:  O(3 * L * (N + Q))
-# Space: O(3 * L * Q)
+# Space: O(3 * L * N)
 #
 
 from collections import Counter
+from functools import reduce
 
 def add(a, b):
     return (a+b)%MOD
-
-def sub(a, b):
-    return (a-b)%MOD
 
 def mult(a, b):
     return (a*b)%MOD
@@ -25,33 +23,24 @@ def pow(i):
 
 def second_mistake():
     def find_diff_1_hashes(f):
+        result = 0
         for _ in range(int(input())):
             V = input()
-            h = 0
-            for i, c in enumerate(V):
-                c = ord(c)-ord('a')
-                h = add(h, mult(c, pow(i)))
-            for i, c in enumerate(V):
-                c = ord(c)-ord('a')
-                for x in META:
-                    x = ord(x)-ord('a')
-                    if x == c:
-                        continue
-                    nh = add(sub(h, mult(c, pow(i))), mult(x, pow(i)))
-                    f(nh, i)
+            h = reduce(lambda h, i: add(h, mult(ord(V[i])-ord('a'), pow(i))), range(len(V)), 0)
+            result += sum(f(add(h, mult(ord(x)-ord(c), pow(i))), i) for i, c in enumerate(V) for x in META if x != c)
+        return result
 
-    def f(nh, i):
-        cnt[nh, i] += 1
-        cnt[nh] += 1
+    def f(h, i):
+        cnt[h, i] += 1
+        cnt[h] += 1
+        return 0
 
-    def g(nh, i):
-        result[0] += cnt[nh]-cnt[nh, i]
+    def g(h, i):
+        return cnt[h]-cnt[h, i] if h in cnt else 0
 
     cnt = Counter()
     find_diff_1_hashes(f)
-    result = [0]
-    find_diff_1_hashes(g)
-    return result[0]//2
+    return find_diff_1_hashes(g)//2
 
 MOD = (1<<64)-59  # largest 64-bit prime
 BASE = 113
