@@ -12,15 +12,11 @@ def ceil_divide(a, b):
 
 def first_time_chapter_1():
     def merge(a, b):
-        cnt = 0
         if len(group[a]) > len(group[b]):
             group[a], group[b]
-        while group[a]:
-            x = group[a].pop()
-            if x in group[b]:
-                cnt += 1
-            else:
-                group[b].add(x)
+        cnt = sum(x in group[b] for x in group[a])
+        group[b] |= group[a]
+        group[a].clear()
         return cnt
 
     N, M, K = map(int, input().split())
