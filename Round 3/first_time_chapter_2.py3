@@ -57,7 +57,7 @@ def first_time_chapter_2():
     for t in range(1, M+1):
         A, B = map(int, input().split())
         merge(A-1, B-1)
-        g = st.tree[1]
+        g = st.tree[1]  # gcd of all the starts of the segments with the same color
         result[g] = min(result[g], t)
     for K in range(1, N+1):
         for x in range(0, N+1, K):
