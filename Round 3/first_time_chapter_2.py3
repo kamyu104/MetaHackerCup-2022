@@ -59,7 +59,7 @@ def first_time_chapter_2():
         merge(A-1, B-1)
         g = st.tree[1]  # gcd of all the starts of the segments with the same color
         result[g] = min(result[g], t)
-    for K in range(1, N+1):
+    for K in range(1, N+1):  # Time: O(NlogN)
         result[K] = min(result[nK] for nK in range(0, N+1, K))
     return sum(result[K] if result[K] != INF else -1 for K in range(1, N+1))
 
