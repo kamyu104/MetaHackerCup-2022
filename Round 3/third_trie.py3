@@ -7,14 +7,14 @@
 # Space: O(T), T is the size of the merged trie
 #
 
+def nC3(n):
+    return n*(n-1)*(n-2)//6
+
 def fourth_player():
     def create_node():
         trie.append([0]*26)
         cnt.append(0)
         return len(trie)-1
-
-    def nC3(n):
-        return n*(n-1)*(n-2)//6
 
     N = int(input())
     trie = [[0]*26]
