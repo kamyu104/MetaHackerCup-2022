@@ -21,14 +21,15 @@ def first_time_chapter_1():
 
     N, M, K = map(int, input().split())
     group = [{i//K} for i in range(N)]
-    result = -1
+    result = INF
     cnt = N-ceil_divide(N, K)
     for t in range(1, M+1):
         A, B = map(int, input().split())
         cnt -= merge(A-1, B-1)
-        if cnt == 0 and result == -1:
-            result = t
-    return result
+        if cnt == 0:
+            result = min(result, t)
+    return result if result != INF else -1
 
+INF = float("inf")
 for case in range(int(input())):
     print('Case #%d: %s' % (case+1, first_time_chapter_1()))
