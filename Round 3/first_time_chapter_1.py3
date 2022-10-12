@@ -11,13 +11,14 @@ def ceil_divide(a, b):
     return (a+b-1)//b
 
 def first_time_chapter_1():
-    def merge(a, b, cnt):
+    def merge(a, b):
+        cnt = 0
         if len(group[a]) > len(group[b]):
             group[a], group[b]
         while group[a]:
             x = group[a].pop()
             if x in group[b]:
-                cnt -= 1
+                cnt += 1
             else:
                 group[b].add(x)
         return cnt
@@ -28,7 +29,7 @@ def first_time_chapter_1():
     cnt = N-ceil_divide(N, K)
     for t in range(1, M+1):
         A, B = map(int, input().split())
-        cnt = merge(A-1, B-1, cnt)
+        cnt -= merge(A-1, B-1)
         if cnt == 0 and result == -1:
             result = t
     return result
