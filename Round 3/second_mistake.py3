@@ -26,8 +26,8 @@ def second_mistake():
         result = 0
         for _ in range(int(input())):
             V = input()
-            h = reduce(lambda h, i: add(h, mult(ord(V[i])-ord('a'), pow(i))), range(len(V)), 0)
-            result += sum(f(add(h, mult(ord(x)-ord(c), pow(i))), i) for i, c in enumerate(V) for x in META if x != c)
+            h = reduce(lambda h, i: add(h, mult(LOOKUP[V[i]], pow(i))), range(len(V)), 0)
+            result += sum(f(add(h, mult(LOOKUP[x]-LOOKUP[c], pow(i))), i) for i, c in enumerate(V) for x in LOOKUP.keys() if x != c)
         return result//2
 
     def f(h, i):
@@ -46,5 +46,6 @@ MOD = (1<<64)-59  # largest 64-bit prime
 BASE = 113
 POW = [1]
 META = "meta"
+LOOKUP = {x:i for i, x in enumerate(META)}
 for case in range(int(input())):
     print('Case #%d: %s' % (case+1, second_mistake()))
