@@ -10,7 +10,7 @@
 def nC3(n):
     return n*(n-1)*(n-2)//6
 
-def fourth_player():
+def third_trie():
     def create_node():
         trie.append([0]*26)
         cnt.append(0)
@@ -33,4 +33,4 @@ def fourth_player():
     return sum(nC3(N)-nC3(N-c) for c in cnt)
 
 for case in range(int(input())):
-    print('Case #%d: %s' % (case+1, fourth_player()))
+    print('Case #%d: %s' % (case+1, third_trie()))
