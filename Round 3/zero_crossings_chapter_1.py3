@@ -101,7 +101,7 @@ def zero_crossings_chapter_1():
         adj[parent1[i]].append(i)
     hashes = iter_dfs1(adj)
     iter_dfs2(adj, hashes)
-    return sum(hashes[parent2[2*idx+0]] == hashes[parent2[2*idx+1]] for idx in range(Q))
+    return sum(hashes[parent2[2*idx]] == hashes[parent2[2*idx+1]] for idx in range(Q))
 
 MIN_X_Y, MAX_X_Y = 0, 10**9
 for case in range(int(input())):
