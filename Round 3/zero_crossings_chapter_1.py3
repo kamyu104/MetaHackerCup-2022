@@ -8,12 +8,6 @@
 #
 
 from sortedcontainers import SortedList
-from random import seed, randint
-
-def hash(lookup, x):
-    if x not in lookup:
-        lookup[x] = randint(0, MOD-1)
-    return lookup[x]
 
 def cross(o, a, b):
     return (a[0] - o[0]) * (b[1] - o[1]) - (a[1] - o[1]) * (b[0] - o[0])
@@ -40,7 +34,6 @@ class Edge(object):
         assert(False)
 
 def iter_dfs1(adj):
-    lookup = {}
     hashes = [-1]*len(adj)
     stk = [(1, 0)]
     while stk:
@@ -50,14 +43,14 @@ def iter_dfs1(adj):
             for v in reversed(adj[u]):
                 stk.append((1, v))
         elif step == 2:
-            hashes[u] = hash(lookup, sum(hashes[v] for v in adj[u]))
+            hashes[u] = hash(tuple(sorted(hashes[v] for v in adj[u])))
     return hashes
 
 def iter_dfs2(adj, hashes):
     stk = [(0, 0)]
     while stk:
         u, h = stk.pop()
-        hashes[u] += h
+        hashes[u] = hash((h, hashes[u]))
         for v in reversed(adj[u]):
             stk.append((v, hashes[u]))
 
@@ -110,8 +103,6 @@ def zero_crossings_chapter_1():
     iter_dfs2(adj, hashes)
     return sum(hashes[parent2[2*idx+0]] == hashes[parent2[2*idx+1]] for idx in range(Q))
 
-seed(0)
-MOD = 1<<64
 MIN_X_Y, MAX_X_Y = 0, 10**9
 for case in range(int(input())):
     print('Case #%d: %s' % (case+1, zero_crossings_chapter_1()))
