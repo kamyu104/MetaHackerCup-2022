@@ -75,7 +75,7 @@ def find_parents(N, Q, events):
             if parent1[idx] == -1:
                 parent1[idx] = find_parent(a, b)
             sl.add((Edge(a, b), idx, upper))
-        else:
+        elif t == 2:
             parent2[idx] = find_parent(a, b)
     return parent1, parent2
 
