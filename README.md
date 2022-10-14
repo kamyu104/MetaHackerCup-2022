@@ -1,4 +1,4 @@
-# [MetaHackerCup-2022](https://www.facebook.com/hackercup/past_rounds/) ![Language](https://img.shields.io/badge/language-Python3-orange.svg) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE) ![Progress](https://img.shields.io/badge/progress-22%20%2F%2024-ff69b4.svg) ![Visitors](https://visitor-badge.laobi.icu/badge?page_id=kamyu104.metahackercup.2022)
+# [MetaHackerCup-2022](https://www.facebook.com/hackercup/past_rounds/) ![Language](https://img.shields.io/badge/language-Python3-orange.svg) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE) ![Progress](https://img.shields.io/badge/progress-23%20%2F%2024-ff69b4.svg) ![Visitors](https://visitor-badge.laobi.icu/badge?page_id=kamyu104.metahackercup.2022)
 
 Python3 solutions of Meta Hacker Cup 2022. Solution begins with `*` means it will get TLE in the largest data set (total computation amount > `10^8`, which is not friendly for Python3 to solve in 5 ~ 15 seconds). A `6-minute` timer is set for uploading the result this year.
 
@@ -45,5 +45,5 @@ Python3 solutions of Meta Hacker Cup 2022. Solution begins with `*` means it wil
 |C| [Second Mistake](https://www.facebook.com/codingcompetitions/hacker-cup/2022/round-3/problems/C)| [Python3](./Round%203/second_mistake.py3) | _O(3 * L * (N + Q))_ | _O(3 * L * N)_ | Easy | | Rabin-Karp Algorithm, Hash Table |
 |D1| [First Time - Chapter 1](https://www.facebook.com/codingcompetitions/hacker-cup/2022/round-3/problems/D1)| [Python3](./Round%203/first_time_chapter_1.py3) | _O(M + NlogN)_ | _O(N)_ | Medium | | Unordered Set |
 |D2| [First Time - Chapter 2](https://www.facebook.com/codingcompetitions/hacker-cup/2022/round-3/problems/D2)| [Python3](./Round%203/first_time_chapter_2.py3) | _O(M + NlogN)_ | _O(N)_ | Hard | | Unordered Set, Segment Tree, Number Theory |
-|E1| [Zero Crossings - Chapter 1](https://www.facebook.com/codingcompetitions/hacker-cup/2022/round-3/problems/E1)| | | | Hard | | |
+|E1| [Zero Crossings - Chapter 1](https://www.facebook.com/codingcompetitions/hacker-cup/2022/round-3/problems/E1)| [Python3](./Round%203/zero_crossings_chapter_1.py3) | _O(VlogV + QlogV)_ | _O(V)_ | Hard | | Geometry, Line Sweep, Tree, DFS, Hash |
 |E2| [Zero Crossings - Chapter 2](https://www.facebook.com/codingcompetitions/hacker-cup/2022/round-3/problems/E2)| | | | Hard | | |
