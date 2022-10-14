@@ -34,7 +34,7 @@ class Edge(object):
         assert(False)
 
 def iter_dfs1(adj):
-    hashes = [-1]*len(adj)
+    hashes = [None]*len(adj)
     stk = [(1, 0)]
     while stk:
         step, u = stk.pop()
