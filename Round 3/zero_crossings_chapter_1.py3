@@ -3,7 +3,7 @@
 # Meta Hacker Cup 2022 Round 3 - Problem E1. Zero Crossings - Chapter 1
 # https://www.facebook.com/codingcompetitions/hacker-cup/2022/round-3/problems/E1
 #
-# Time:  O(VlogV + QlogV)
+# Time:  O(VlogV + QlogV), V = M * N
 # Space: O(V)
 #
 
