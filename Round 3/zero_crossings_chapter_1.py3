@@ -20,7 +20,7 @@ def cross(o, a, b):
 
 class Edge(object):
     def __init__(self, a, b):
-        assert(a[0] <= b[0])
+        assert(a <= b)
         self.a = a
         self.b = b
 
