@@ -55,21 +55,21 @@ def iter_dfs2(adj, hashes):
             stk.append((v, hashes[u]))
 
 def find_parents(N, Q, events):
-    def find_parent(a, b):
-        i = sl.bisect_left((Edge(a, b),))
+    def find_parent(e):
+        i = sl.bisect_left((e,))
         return sl[i][1] if sl[i][2] else parent1[sl[i][1]]
 
     parent1, parent2 = [-1]*(N+1), [-1]*(2*Q)
     sl = SortedList([(Edge((MIN_X_Y-1, MAX_X_Y+1), (MAX_X_Y+1, MAX_X_Y+1)), 0, True)])
-    for (_, t, _), idx, a, b, upper in events:
+    for (_, t, _), idx, e, upper in events:
         if t == 0:
-            sl.remove((Edge(a, b), idx, upper))
+            sl.remove((e, idx, upper))
         elif t == 1:
             if parent1[idx] == -1:
-                parent1[idx] = find_parent(a, b)
-            sl.add((Edge(a, b), idx, upper))
+                parent1[idx] = find_parent(e)
+            sl.add((e, idx, upper))
         elif t == 2:
-            parent2[idx] = find_parent(a, b)
+            parent2[idx] = find_parent(e)
     return parent1, parent2
 
 def zero_crossings_chapter_1():
@@ -87,13 +87,13 @@ def zero_crossings_chapter_1():
             if a[0] > b[0]:
                 upper = False
                 a, b = b, a
-            events.append(((a[0], 1, -a[1]), idx, a, b, upper))
-            events.append(((b[0], 0, -b[1]), idx, a, b, upper))
+            events.append(((a[0], 1, -a[1]), idx, Edge(a, b), upper))
+            events.append(((b[0], 0, -b[1]), idx, Edge(a, b), upper))
     Q = int(input())
     for idx in range(Q):
         A, B, C, D = map(int, input().split())
-        events.append(((A, 2, -B), 2*idx+0, (A, B), (A, B), False))
-        events.append(((C, 2, -D), 2*idx+1, (C, D), (C, D), False))
+        events.append(((A, 2, -B), 2*idx+0, Edge((A, B), (A, B)), False))
+        events.append(((C, 2, -D), 2*idx+1, Edge((C, D), (C, D)), False))
     events.sort(key=lambda x: x[0])  # sort by (a_x, t, -a_y)
     parent1, parent2 = find_parents(N, Q, events)
     adj = [[] for _ in range(N+1)]
