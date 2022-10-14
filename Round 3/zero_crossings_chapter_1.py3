@@ -47,7 +47,7 @@ def iter_dfs1(adj):
     return hashes
 
 def iter_dfs2(adj, hashes):
-    stk = [(0, 0)]
+    stk = [(0, None)]
     while stk:
         u, h = stk.pop()
         hashes[u] = hash((h, hashes[u]))
