@@ -92,8 +92,8 @@ def zero_crossings_chapter_1():
     Q = int(input())
     for idx in range(Q):
         A, B, C, D = map(int, input().split())
-        events.append(((A, 2, -B), 2*idx+0, Edge((A, B), (A, B)), False))
-        events.append(((C, 2, -D), 2*idx+1, Edge((C, D), (C, D)), False))
+        for i, a in enumerate([(A, B), (C, D)]):
+          events.append(((a[0], 2, -a[1]), 2*idx+i, Edge(a, a), False))
     events.sort(key=lambda x: x[0])  # sort by (a_x, t, -a_y)
     parent1, parent2 = find_parents(N, Q, events)
     adj = [[] for _ in range(N+1)]
