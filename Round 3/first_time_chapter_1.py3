@@ -1,6 +1,6 @@
 # Copyright (c) 2022 kamyu. All rights reserved.
 #
-# Meta Hacker Cup 2022 Round 3 - Problem D1. First Time Chapter 1
+# Meta Hacker Cup 2022 Round 3 - Problem D1. First Time - Chapter 1
 # https://www.facebook.com/codingcompetitions/hacker-cup/2022/round-3/problems/D1
 #
 # Time:  O(M + NlogN)
