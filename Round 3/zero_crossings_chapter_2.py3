@@ -191,7 +191,8 @@ def zero_crossings_chapter_2():
     for _ in range(Q):
         A, B, C, D, E = map(int, input().split())
         a, b = (A^R_E, B^R_E), (C^R_E, D^R_E)
-        R = int(hashes[find_parent(parent, find_root(roots, a), Edge(a, a))] == hashes[find_parent(parent, find_root(roots, b), Edge(b, b))])
+        R = int(hashes[find_parent(parent, find_root(roots, a), Edge(a, a))] ==
+                hashes[find_parent(parent, find_root(roots, b), Edge(b, b))])
         result += R
         R_E ^= R*E
     return result
