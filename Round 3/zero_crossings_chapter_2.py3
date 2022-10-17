@@ -4,7 +4,7 @@
 # https://www.facebook.com/codingcompetitions/hacker-cup/2022/round-3/problems/E2
 #
 # Time:  O((N * M) * log(N * M) + Q * log(N * M)), pass in PyPy3 but Python3
-# Space: O(N * M)
+# Space: O((N * M) * log(N * M))
 #
 
 from random import seed, random
@@ -21,40 +21,46 @@ class PersistentTreap(object):
     def __init__(self):
         self.root = None
 
-    def insert(self, x, key):
+    def insert(self, key):
+        self.root = self.__insert(self.root, key)
+
+    def delete(self, key):
+        self. root = self.__delete(self.root, key)
+
+    def __insert(self, x, key):
         if not x:
             return TreapNode(key)
         y = copy(x)
         if key < y.key:
-            y.left = self.insert(y.left, key)
+            y.left = self.__insert(y.left, key)
             if y.left.prior < y.prior:
                 return self.__rotate_left(y)
         elif y.key < key:
-            y.right = self.insert(y.right, key)
+            y.right = self.__insert(y.right, key)
             if y.right.prior < y.prior:
                 return self.__rotate_right(y)
         return y
 
-    def delete(self, x, key):
+    def __delete(self, x, key):
         y = copy(x)
         if key < y.key:
-            y.left = self.delete(y.left, key)
+            y.left = self.__delete(y.left, key)
         elif y.key < key:
-            y.right = self.delete(y.right, key)
+            y.right = self.__delete(y.right, key)
         else:
-            return self.__delete(y)
+            return self.__delete_node(y)
         return y
 
-    def __delete(self, x):
+    def __delete_node(self, x):
         if x.left and x.right:
             if x.left.prior < x.right.prior:
                 x.left = copy(x.left)
                 y = self.__rotate_left(x)
-                y.right = self.__delete(x)
+                y.right = self.__delete_node(x)
             else:
                 x.right = copy(x.right)
                 y = self.__rotate_right(x)
-                y.left = self.__delete(x)
+                y.left = self.__delete_node(x)
             return y
         return x.right if x.right else x.left
 
@@ -144,15 +150,15 @@ def find_parent(parent, root, e):
 def find_parents(N, events):
     parent = [-1]*(N+1)
     pt = PersistentTreap()
-    pt.root = pt.insert(pt.root, (Edge((MIN_X_Y-1, MAX_X_Y+1), (MAX_X_Y+1, MAX_X_Y+1)), 0, True))
+    pt.insert((Edge((MIN_X_Y-1, MAX_X_Y+1), (MAX_X_Y+1, MAX_X_Y+1)), 0, True))
     roots = [(MIN_X_Y-1, pt.root)]
     for (a_x, t, _), idx, e, upper in events:
         if t == 0:
-            pt.root = pt.delete(pt.root, (e, idx, upper))
+            pt.delete((e, idx, upper))
         elif t == 1:
             if parent[idx] == -1:
                 parent[idx] = find_parent(parent, pt.root, e)
-            pt.root = pt.insert(pt.root, (e, idx, upper))
+            pt.insert((e, idx, upper))
         roots.append((a_x, pt.root))
     return parent, roots
 
