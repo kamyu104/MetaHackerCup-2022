@@ -28,7 +28,7 @@ def fourth_player():
                 else:
                     new_A.append(x)
             new_A.sort()
-            new_B.reverse()
+            new_B.reverse()  # the same as new_B.sort()
         B, A = new_A, new_B
     return len(A)
 
