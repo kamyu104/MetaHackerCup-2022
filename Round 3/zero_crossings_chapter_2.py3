@@ -25,7 +25,7 @@ class PersistentTreap(object):
         self.root = self.__insert(self.root, key)
 
     def delete(self, key):
-        self. root = self.__delete(self.root, key)
+        self.root = self.__delete(self.root, key)
 
     def __insert(self, x, key):
         if not x:
