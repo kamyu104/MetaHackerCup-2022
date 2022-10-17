@@ -186,8 +186,8 @@ def zero_crossings_chapter_2():
         adj[parent[i]].append(i)
     hashes = iter_dfs1(adj)
     iter_dfs2(adj, hashes)
-    Q = int(input())
     result = R_E = 0
+    Q = int(input())
     for _ in range(Q):
         A, B, C, D, E = map(int, input().split())
         a, b = (A^R_E, B^R_E), (C^R_E, D^R_E)
