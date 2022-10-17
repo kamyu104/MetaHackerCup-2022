@@ -7,69 +7,7 @@
 # Space: O(N * M + Q)
 #
 
-from random import seed, random
-
-class TreapNode(object):
-    def __init__(self, key):
-        self.key = key
-        self.prior = random()
-        self.left = None
-        self.right = None
-
-class Treap(object):
-    def __init__(self):
-        self.root = None
-
-    def insert(self, key):
-        self.root = self.__insert(self.root, key)
-
-    def delete(self, key):
-        self.root = self.__delete(self.root, key)
-
-    def __insert(self, x, key):
-        if not x:
-            return TreapNode(key)
-        if key < x.key:
-            x.left = self.__insert(x.left, key)
-            if x.left.prior < x.prior:
-                return self.__rotate_left(x)
-        elif x.key < key:
-            x.right = self.__insert(x.right, key)
-            if x.right.prior < x.prior:
-                return self.__rotate_right(x)
-        return x
-
-    def __delete(self, x, key):
-        if key < x.key:
-            x.left = self.__delete(x.left, key)
-        elif x.key < key:
-            x.right = self.__delete(x.right, key)
-        else:
-            return self.__delete_node(x)
-        return x
-
-    def __delete_node(self, x):
-        if x.left and x.right:
-            if x.left.prior < x.right.prior:
-                y = self.__rotate_left(x)
-                y.right = self.__delete_node(x)
-            else:
-                y = self.__rotate_right(x)
-                y.left = self.__delete_node(x)
-            return y
-        return x.right if x.right else x.left
-
-    def __rotate_left(self, x):
-        y = x.left
-        x.left = y.right
-        y.right = x
-        return y
-
-    def __rotate_right(self, x):
-        y = x.right
-        x.right = y.left
-        y.left = x
-        return y
+from sortedcontainers import SortedList
 
 def cross(o, a, b):
     return (a[0] - o[0]) * (b[1] - o[1]) - (a[1] - o[1]) * (b[0] - o[0])
@@ -116,31 +54,20 @@ def iter_dfs2(adj, hashes):
         for v in reversed(adj[u]):
             stk.append((v, hashes[u]))
 
-def bisect_right(node, x):
-    result = None
-    while node:
-        if x < node.key:
-            result = node
-            node = node.left
-        else:
-            node = node.right
-    return result
-
 def find_parents(N, Q, events):
     def find_parent(e):
-        node = bisect_right(tp.root, (e,))
-        return node.key[1] if node.key[2] else parent1[node.key[1]]
+        i = sl.bisect_left((e,))
+        return sl[i][1] if sl[i][2] else parent1[sl[i][1]]
 
     parent1, parent2 = [-1]*(N+1), [-1]*(2*Q)
-    tp = Treap()
-    tp.insert((Edge((MIN_X_Y-1, MAX_X_Y+1), (MAX_X_Y+1, MAX_X_Y+1)), 0, True))
+    sl = SortedList([(Edge((MIN_X_Y-1, MAX_X_Y+1), (MAX_X_Y+1, MAX_X_Y+1)), 0, True)])
     for (_, t, _), idx, e, upper in events:
         if t == 0:
-            tp.delete((e, idx, upper))
+            sl.remove((e, idx, upper))
         elif t == 1:
             if parent1[idx] == -1:
                 parent1[idx] = find_parent(e)
-            tp.insert((e, idx, upper))
+            sl.add((e, idx, upper))
         elif t == 2:
             parent2[idx] = find_parent(e)
     return parent1, parent2
@@ -176,7 +103,6 @@ def zero_crossings_chapter_1():
     iter_dfs2(adj, hashes)
     return sum(hashes[parent2[2*idx]] == hashes[parent2[2*idx+1]] for idx in range(Q))
 
-seed(0)
 MIN_X_Y, MAX_X_Y = 0, 10**9
 for case in range(int(input())):
     print('Case #%d: %s' % (case+1, zero_crossings_chapter_1()))
