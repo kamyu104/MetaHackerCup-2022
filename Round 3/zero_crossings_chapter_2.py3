@@ -136,8 +136,8 @@ def find_root(roots, a):
     return roots[bisect_left(roots, (a[0]+1,))-1][1]
 
 def find_parent(parent, root, e):
-    node = bisect_right(root, (e,))
-    return node.key[1] if node.key[2] else parent[node.key[1]]
+    _, idx, upper = bisect_right(root, (e,)).key
+    return idx if upper else parent[idx]
 
 def find_parents(N, events):
     parent = [-1]*(N+1)

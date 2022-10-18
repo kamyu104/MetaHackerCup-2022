@@ -128,8 +128,8 @@ def bisect_right(node, x):
 
 def find_parents(N, Q, events):
     def find_parent(e):
-        node = bisect_right(tp.root, (e,))
-        return node.key[1] if node.key[2] else parent1[node.key[1]]
+        _, idx, upper = bisect_right(tp.root, (e,)).key
+        return idx if upper else parent1[idx]
 
     parent1, parent2 = [-1]*(N+1), [-1]*(2*Q)
     tp = Treap()

@@ -56,8 +56,8 @@ def iter_dfs2(adj, hashes):
 
 def find_parents(N, Q, events):
     def find_parent(e):
-        i = sl.bisect_right((e,))
-        return sl[i][1] if sl[i][2] else parent1[sl[i][1]]
+        _, idx, upper = sl[sl.bisect_right((e,))]
+        return idx if upper else parent1[idx]
 
     parent1, parent2 = [-1]*(N+1), [-1]*(2*Q)
     sl = SortedList([(Edge((MIN_X_Y-1, MAX_X_Y+1), (MAX_X_Y+1, MAX_X_Y+1)), 0, True)])
