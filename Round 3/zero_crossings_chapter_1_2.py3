@@ -56,7 +56,7 @@ def iter_dfs2(adj, hashes):
 
 def find_parents(N, Q, events):
     def find_parent(e):
-        i = sl.bisect_left((e,))
+        i = sl.bisect_right((e,))
         return sl[i][1] if sl[i][2] else parent1[sl[i][1]]
 
     parent1, parent2 = [-1]*(N+1), [-1]*(2*Q)
