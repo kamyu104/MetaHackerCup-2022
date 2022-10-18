@@ -9,6 +9,7 @@
 
 from random import seed, random
 from copy import copy
+from bisect import bisect_left
 
 class TreapNode(object):
     def __init__(self, key):
@@ -100,15 +101,6 @@ class Edge(object):
             return cross(self.a, other.a, self.b) < 0
         assert(False)
 
-def binary_search_right(left, right, check):
-    while left <= right:
-        mid = left + (right-left)//2
-        if not check(mid):
-            right = mid-1
-        else:
-            left = mid+1
-    return right
-
 def bisect_right(node, x):
     result = None
     while node:
@@ -141,7 +133,7 @@ def iter_dfs2(adj, hashes):
             stk.append((v, hashes[u]))
 
 def find_root(roots, a):
-    return roots[binary_search_right(0, len(roots)-1, lambda x: roots[x][0] <= a[0])][1]
+    return roots[bisect_left(roots, (a[0]+1,))-1][1]
 
 def find_parent(parent, root, e):
     node = bisect_right(root, (e,))
