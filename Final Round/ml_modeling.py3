@@ -24,9 +24,9 @@ def ml_modeling():
     N = int(input())
     P = [list(map(float, input().split())) for _ in range(N)]
     candidates = []
-    for x in range(MIN_X_Y, MAX_X_Y_R+1):
-        for y in range(MIN_X_Y, MAX_X_Y_R+1):
-            for r in range(MIN_R, MAX_X_Y_R):
+    for x in range(MIN_X, MAX_X+1):
+        for y in range(MIN_Y, MAX_Y+1):
+            for r in range(MIN_R, MAX_R+1):
                 if check(P, x, y, r):
                     candidates.append((x, y, r))
                     break
@@ -47,8 +47,8 @@ def ml_modeling():
     return f"{ax} {ay} {bx} {by} {r}"
 
 MIN_N = 500
-MIN_X_Y = 0
+MIN_X = MIN_Y = 0
 MIN_R = 1
-MAX_X_Y_R = 50
+MAX_X = MAX_Y = MAX_R = 50
 for case in range(int(input())):
     print('Case #%d: %s' % (case+1, ml_modeling()))
