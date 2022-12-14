@@ -33,7 +33,7 @@ def emerald_exhibiting():
         return 1
     is_one = is_two = is_three = True
     is_two_even_cnt = False
-    curr = 1
+    total = 1
     for p in PRIMES:
         if p > N-1:
             break
@@ -46,8 +46,8 @@ def emerald_exhibiting():
             if not k%2:
                 is_two_even_cnt = True
         else:
-            curr = (curr * pow(p, k, 8))%8
-    if is_two_even_cnt and curr == 7:  # 4^a(8b+7), reference: https://en.wikipedia.org/wiki/Legendre%27s_three-square_theorem
+            total = (total * pow(p, k, 8))%8
+    if is_two_even_cnt and total == 7:  # 4^a(8b+7), reference: https://en.wikipedia.org/wiki/Legendre%27s_three-square_theorem
         is_three = False
     return 1 if is_one else 2 if is_two else 3 if is_three else 4  # reference: https://en.wikipedia.org/wiki/Lagrange%27s_four-square_theorem
     
