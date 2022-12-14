@@ -31,23 +31,24 @@ def emerald_exhibiting():
     N, K = map(int, input().split())
     if N == K:
         return 1
-    is_one = is_two = True
+    is_one = is_two = is_three = True
     is_two_even_cnt = False
     curr = 1
     for p in PRIMES:
         if p > N-1:
             break
-        cnt = (count(N-1, p)-count(K, p))%2
-        if cnt%2:
+        k = (count(N-1, p)-count(K, p))%2
+        if k%2:
             is_one = False
-        if p%4 == 3 and cnt%2:  # reference: https://en.wikipedia.org/wiki/Sum_of_two_squares_theorem
+        if p%4 == 3 and k%2:  # reference: https://en.wikipedia.org/wiki/Sum_of_two_squares_theorem
             is_two = False
         if p == 2:
-            if not cnt%2:
+            if not k%2:
                 is_two_even_cnt = True
         else:
-            curr = (curr * pow(p, cnt, 8))%8
-    is_three = not (is_two_even_cnt and curr == 7)  # reference: https://en.wikipedia.org/wiki/Legendre%27s_three-square_theorem
+            curr = (curr * pow(p, k, 8))%8
+    if is_two_even_cnt and curr == 7:  # 4^a(8b+7), reference: https://en.wikipedia.org/wiki/Legendre%27s_three-square_theorem
+        is_three = False
     return 1 if is_one else 2 if is_two else 3 if is_three else 4  # reference: https://en.wikipedia.org/wiki/Lagrange%27s_four-square_theorem
     
 MAX_N = 10**9
