@@ -1,4 +1,4 @@
-# [MetaHackerCup-2022](https://www.facebook.com/hackercup/past_rounds/) ![Language](https://img.shields.io/badge/language-Python3-orange.svg) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE) ![Progress](https://img.shields.io/badge/progress-25%20%2F%2030-ff69b4.svg) ![Visitors](https://visitor-badge.laobi.icu/badge?page_id=kamyu104.metahackercup.2022)
+# [MetaHackerCup-2022](https://www.facebook.com/hackercup/past_rounds/) ![Language](https://img.shields.io/badge/language-Python3-orange.svg) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE) ![Progress](https://img.shields.io/badge/progress-26%20%2F%2030-ff69b4.svg) ![Visitors](https://visitor-badge.laobi.icu/badge?page_id=kamyu104.metahackercup.2022)
 
 Python3 solutions of Meta Hacker Cup 2022. Solution begins with `*` means it will get TLE in the largest data set (total computation amount > `10^8`, which is not friendly for Python3 to solve in 5 ~ 15 seconds). A `6-minute` timer is set for uploading the result this year.
 
@@ -53,7 +53,7 @@ Python3 solutions of Meta Hacker Cup 2022. Solution begins with `*` means it wil
 | # | Title | Solution | Time | Space | Difficulty | Tag | Note |
 |---| ----- | -------- | ---- | ----- | ---------- | --- | ---- |
 |A| [ML Modeling](https://www.facebook.com/codingcompetitions/hacker-cup/2022/final-round/problems/A)| [PyPy3](./Final%20Round/ml_modeling.py3) | _O(MAX_X * MAX_Y * MAX_R * MIN_N + (MAX_X * MAX_Y)^2 + N)_ | _O((MAX_X * MAX_Y)_ | Medium | | Geometry |
-|B| [Emerald Exhibiting](https://www.facebook.com/codingcompetitions/hacker-cup/2022/final-round/problems/B)| | | | Medium | | |
+|B| [Emerald Exhibiting](https://www.facebook.com/codingcompetitions/hacker-cup/2022/final-round/problems/B)| [PyPy3](./Final%20Round/emerald_exhibiting.py3) | _O(P * log(logN))_ | _O(P)_ | Medium | | Combinatorics, Number Theory |
 |C| [Tile Transposing](https://www.facebook.com/codingcompetitions/hacker-cup/2022/final-round/problems/C)| | | | Hard | | |
 |D| [Alphabet Adventuring](https://www.facebook.com/codingcompetitions/hacker-cup/2022/final-round/problems/D)| | | | Hard | | |
 |E| [Hazelnut Harvesting](https://www.facebook.com/codingcompetitions/hacker-cup/2022/final-round/problems/E)| | | | Hard | | |
