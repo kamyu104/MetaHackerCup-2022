@@ -1,6 +1,8 @@
 # [MetaHackerCup-2022](https://www.facebook.com/hackercup/past_rounds/) ![Language](https://img.shields.io/badge/language-Python3-orange.svg) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE) ![Progress](https://img.shields.io/badge/progress-26%20%2F%2030-ff69b4.svg) ![Visitors](https://visitor-badge.laobi.icu/badge?page_id=kamyu104.metahackercup.2022)
 
-Python3 solutions of Meta Hacker Cup 2022. Solution begins with `*` means it will get TLE in the largest data set (total computation amount > `10^8`, which is not friendly for Python3 to solve in 5 ~ 15 seconds). A `6-minute` timer is set for uploading the result this year.
+* Python3 solutions of Meta Hacker Cup 2022. Solution begins with `*` means it will get TLE in the largest data set.
+* Total computation amount > `10^8`, which is not friendly for Python3 to solve in 5 ~ 15 seconds. A `6-minute` timer is set for uploading the result this year.
+* A problem was marked as `Very Hard` means that it was an unsolved one during the contest and may not be that difficult.
 
 * [Hacker Cup 2021](https://github.com/kamyu104/FacebookHackerCup-2021)
 * [Qualification Round](https://github.com/kamyu104/MetaHackerCup-2022#qualification-round)
