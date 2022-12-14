@@ -3,7 +3,7 @@
 # Meta Hacker Cup 2022 Final Round - Problem B. Emerald Exhibiting
 # https://www.facebook.com/codingcompetitions/hacker-cup/2022/final-round/problems/B
 #
-# Time:  O(P * log(logN)), pass in PyPy3 but Python3
+# Time:  O(P), pass in PyPy3 but Python3
 # Space: O(P)
 #
 
@@ -45,8 +45,8 @@ def emerald_exhibiting():
         if p == 2:
             if not k%2:
                 is_two_even_cnt = True
-        else:
-            total = (total * pow(p, k, 8))%8
+        elif k%2:
+            total = total*p%8
     if is_two_even_cnt and total == 7:  # (N-1)!/K! = 4^a(8b+7), reference: https://en.wikipedia.org/wiki/Legendre%27s_three-square_theorem
         is_three = False
     return 1 if is_one else 2 if is_two else 3 if is_three else 4  # reference: https://en.wikipedia.org/wiki/Lagrange%27s_four-square_theorem
