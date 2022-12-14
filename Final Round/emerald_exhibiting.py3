@@ -37,7 +37,7 @@ def emerald_exhibiting():
     for p in PRIMES:
         if p > N-1:
             break
-        k = (count(N-1, p)-count(K, p))%2
+        k = count(N-1, p)-count(K, p)
         if k%2:
             is_one = False
         if p%4 == 3 and k%2:  # reference: https://en.wikipedia.org/wiki/Sum_of_two_squares_theorem
