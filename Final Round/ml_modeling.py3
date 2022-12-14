@@ -10,7 +10,7 @@
 from math import atan2
 
 def check(P, x, y, r):
-    return all((P[i][0]-x)**2 + (P[i][1]-y)**2 <= r**2 for i in range(min(len(P), MIN_N)))
+    return all((P[i][0]-x)**2 + (P[i][1]-y)**2 <= r**2 for i in range(MIN_N))
 
 def overlapped_area(ax, ay, bx, by, r):
     d = ((ax-bx)**2+(ay-by)**2)**0.5

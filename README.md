@@ -1,4 +1,4 @@
-# [MetaHackerCup-2022](https://www.facebook.com/hackercup/past_rounds/) ![Language](https://img.shields.io/badge/language-Python3-orange.svg) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE) ![Progress](https://img.shields.io/badge/progress-24%20%2F%2024-ff69b4.svg) ![Visitors](https://visitor-badge.laobi.icu/badge?page_id=kamyu104.metahackercup.2022)
+# [MetaHackerCup-2022](https://www.facebook.com/hackercup/past_rounds/) ![Language](https://img.shields.io/badge/language-Python3-orange.svg) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE) ![Progress](https://img.shields.io/badge/progress-25%20%2F%2030-ff69b4.svg) ![Visitors](https://visitor-badge.laobi.icu/badge?page_id=kamyu104.metahackercup.2022)
 
 Python3 solutions of Meta Hacker Cup 2022. Solution begins with `*` means it will get TLE in the largest data set (total computation amount > `10^8`, which is not friendly for Python3 to solve in 5 ~ 15 seconds). A `6-minute` timer is set for uploading the result this year.
 
@@ -7,7 +7,8 @@ Python3 solutions of Meta Hacker Cup 2022. Solution begins with `*` means it wil
 * [Round 1](https://github.com/kamyu104/MetaHackerCup-2022#round-1)
 * [Round 2](https://github.com/kamyu104/MetaHackerCup-2022#round-2)
 * [Round 3](https://github.com/kamyu104/MetaHackerCup-2022#round-3)
-
+* [Final Round](https://github.com/kamyu104/MetaHackerCup-2022#final-round)
+  
 ## Qualification Round
 | # | Title | Solution | Time | Space | Difficulty | Tag | Note |
 |---| ----- | -------- | ---- | ----- | ---------- | --- | ---- |
@@ -47,3 +48,13 @@ Python3 solutions of Meta Hacker Cup 2022. Solution begins with `*` means it wil
 |D2| [First Time - Chapter 2](https://www.facebook.com/codingcompetitions/hacker-cup/2022/round-3/problems/D2)| [Python3](./Round%203/first_time_chapter_2.py3) | _O(M + NlogN)_ | _O(N)_ | Hard | | Unordered Set, Segment Tree, Number Theory |
 |E1| [Zero Crossings - Chapter 1](https://www.facebook.com/codingcompetitions/hacker-cup/2022/round-3/problems/E1)| [Python3](./Round%203/zero_crossings_chapter_1.py3) [Python3](./Round%203/zero_crossings_chapter_1_2.py3) | _O((N * M + Q) * log(N * M + Q))_ | _O(N * M + Q)_ | Hard | | Offline Solution, Geometry, Sort, Line Sweep, Treap, Sorted List, Binary Search, Tree, DFS, Hash |
 |E2| [Zero Crossings - Chapter 2](https://www.facebook.com/codingcompetitions/hacker-cup/2022/round-3/problems/E2)| [PyPy3](./Round%203/zero_crossings_chapter_2.py3) | _O((N * M) * log(N * M) + Q * log(N * M))_ | _O((N * M) * log(N * M)_ | Hard | | Online Solution, Geometry, Sort, Line Sweep, Persistent Treap, Binary Search, Tree, DFS, Hash |
+
+## Final Round
+| # | Title | Solution | Time | Space | Difficulty | Tag | Note |
+|---| ----- | -------- | ---- | ----- | ---------- | --- | ---- |
+|A| [ML Modeling](https://www.facebook.com/codingcompetitions/hacker-cup/2022/final-round/problems/A)| [PyPy3](./Final%20Round/ml_modeling.py3) | _O(MAX_X * MAX_Y * MAX_R * MIN_N + (MAX_X * MAX_Y)^2 + N)_ | _O((MAX_X * MAX_Y)_ | Medium | | Geometry |
+|B| [Emerald Exhibiting](https://www.facebook.com/codingcompetitions/hacker-cup/2022/final-round/problems/B)| | | | Medium | | |
+|C| [Tile Transposing](https://www.facebook.com/codingcompetitions/hacker-cup/2022/final-round/problems/C)| | | | Hard | | |
+|D| [Alphabet Adventuring](https://www.facebook.com/codingcompetitions/hacker-cup/2022/final-round/problems/D)| | | | Hard | | |
+|E| [Hazelnut Harvesting](https://www.facebook.com/codingcompetitions/hacker-cup/2022/final-round/problems/E)| | | | Hard | | |
+|F| [Cup Counterbalancing](https://www.facebook.com/codingcompetitions/hacker-cup/2022/final-round/problems/F)| | | | Very Hard | | |
