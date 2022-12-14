@@ -1,6 +1,6 @@
 # Copyright (c) 2022 kamyu. All rights reserved.
 #
-# Meta Hacker Cup 2022 Final Round - Problem B. ML Modeling
+# Meta Hacker Cup 2022 Final Round - Problem B. Emerald Exhibiting
 # https://www.facebook.com/codingcompetitions/hacker-cup/2022/final-round/problems/B
 #
 # Time:  O(P * log(logN)), pass in PyPy3 but Python3
