@@ -6,6 +6,8 @@
 # Time:  O(M * N * log(M * N)^2), pass in PyPy3 but Python3
 # Space: O(M * N)
 #
+# faster but worse time complexity
+#
 
 class RollbackUnionFind(object):  # Time: O(n * logn), Space: O(n)
     def __init__(self, n):
