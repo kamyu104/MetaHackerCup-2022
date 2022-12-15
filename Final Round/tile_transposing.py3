@@ -99,7 +99,7 @@ def tile_transposing():
     R, C = map(int, input().split())
     G = []
     for _ in range(R):
-        G.extend(list(map(int, input().split())))
+        G.extend(map(int, input().split()))
     uf = RollbackUnionFind(R*C)
     lookup = [False]*(R*C)
     result = [0]
