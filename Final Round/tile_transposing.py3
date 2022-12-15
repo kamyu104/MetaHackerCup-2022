@@ -3,7 +3,7 @@
 # Meta Hacker Cup 2022 Final Round - Problem C. Tile Transposing
 # https://www.facebook.com/codingcompetitions/hacker-cup/2022/final-round/problems/C
 #
-# Time:  O(M * N * log(M * N)), TLE in both PyPy3 and Python3
+# Time:  O(M * N * log(M * N)), pass in PyPy3 but Python3
 # Space: O(M * N)
 #
 
@@ -21,7 +21,7 @@ class RollbackUnionFind(object):  # Time: O(n * alpha(n)), Space: O(n)
             x = self.set[x]
         while stk:
             y = stk.pop()
-            self.undos.append((1, y, self.set[y]))  # added
+            self.undos.append((~y, self.set[y]))  # added
             self.set[y] = x
         return x
 
@@ -31,9 +31,8 @@ class RollbackUnionFind(object):  # Time: O(n * alpha(n)), Space: O(n)
             return False
         if self.size[x] > self.size[y]:  # union by size
             x, y = y, x
-        self.undos.append((1, x, self.set[x]))  # added
+        self.undos.append((x, y))  # added
         self.set[x] = self.set[y]
-        self.undos.append((2, y, self.size[y]))  # added
         self.size[y] += self.size[x]
         return True
 
@@ -45,11 +44,12 @@ class RollbackUnionFind(object):  # Time: O(n * alpha(n)), Space: O(n)
 
     def rollback(self):  # added
         for _ in range(len(self.undos)-self.snapshots.pop()):
-            t, k, v = self.undos.pop()
-            if t == 1:
-                self.set[k] = v
-            elif t == 2:
-                self.size[k] = v
+            x, y = self.undos.pop()
+            if x >= 0:
+                self.size[y] -= self.size[x]
+                self.set[x] = x
+            else:
+                self.set[~x] = y
 
 def tile_transposing():
     def merge(i):
