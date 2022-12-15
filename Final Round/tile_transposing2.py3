@@ -46,7 +46,6 @@ class PersistentUnionFind(object):  # Time: O(n * logn), Space: O(n)
 
 def tile_transposing():
     def merge(i):
-        lookup[i] = True
         r, c = divmod(i, C)
         for dr, dc in DIRECTIONS:
             nr, nc = r+dr, c+dc
@@ -54,40 +53,39 @@ def tile_transposing():
             if 0 <= nr < R and 0 <= nc < C and G[ni] == G[i] and lookup[ni]:
                 uf.union_set(i, ni)
 
+    def clear(i):
+        r, c = divmod(i, C)
+        for dr, dc in DIRECTIONS:
+            nr, nc = r+dr, c+dc
+            ni = nr*C+nc
+            if not (0 <= nr < R and 0 <= nc < C and G[ni] != G[i]):
+                continue
+            uf.snapshot()
+            for dr, dc in DIRECTIONS:
+                nnr, nnc = nr+dr, nc+dc
+                nni = nnr*C+nnc
+                if 0 <= nnr < R and 0 <= nnc < C and nni != i and G[nni] == G[i]:
+                    uf.union_set(i, nni)
+            if uf.total(i) >= 3:
+                result[0] += uf.total(i)
+            uf.rollback()
+
     def dfs(left, right):
         if left == right:
-            i = left
-            r, c = divmod(i, C)
-            for dr, dc in DIRECTIONS:
-                nr, nc = r+dr, c+dc
-                ni = nr*C+nc
-                if not (0 <= nr < R and 0 <= nc < C and G[ni] != G[i]):
-                    continue
-                uf.snapshot()
-                for dr, dc in DIRECTIONS:
-                    nnr, nnc = nr+dr, nc+dc
-                    nni = nnr*C+nnc
-                    if 0 <= nnr < R and 0 <= nnc < C and nni != i and G[nni] == G[i]:
-                        uf.union_set(i, nni)
-                if uf.total(i) >= 3:
-                    result[0] += uf.total(i)
-                uf.rollback()
+            clear(left)
             return
         mid = left + (right-left)//2
-        uf.snapshot()
-        for i in range(mid+1, right+1):
-            merge(i)
-        dfs(left, mid)
-        for i in range(mid+1, right+1):
-            lookup[i] = False
-        uf.rollback()
-        uf.snapshot()
-        for i in range(left, mid+1):
-            merge(i)
-        dfs(mid+1, right)
-        for i in range(left, mid+1):
-            lookup[i] = False
-        uf.rollback()
+        l1, r1, l2, r2 = left, mid, mid+1, right
+        for _ in range(2):
+            uf.snapshot()
+            for i in range(l1, r1+1):
+                lookup[i] = True
+                merge(i)
+            dfs(l2, r2)
+            for i in range(l1, r1+1):
+                lookup[i] = False
+            uf.rollback()
+            l1, r1, l2, r2 = l2, r2, l1, r1
 
     R, C = map(int, input().split())
     G = []
