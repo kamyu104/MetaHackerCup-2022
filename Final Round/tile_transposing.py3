@@ -7,7 +7,7 @@
 # Space: O(M * N)
 #
 
-class RollbackUnionFind(object):  # Time: O(n * alpha(n)), Space: O(n)
+class PersistentUnionFind(object):  # Time: O(n * alpha(n)), Space: O(n)
     def __init__(self, n):
         self.set = list(range(n))
         self.size = [1]*n
@@ -100,7 +100,7 @@ def tile_transposing():
     G = []
     for _ in range(R):
         G.extend(map(int, input().split()))
-    uf = RollbackUnionFind(R*C)
+    uf = PersistentUnionFind(R*C)
     lookup = [False]*(R*C)
     result = [0]
     dfs(0, len(lookup)-1)
