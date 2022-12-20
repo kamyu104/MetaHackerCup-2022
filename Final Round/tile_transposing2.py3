@@ -97,6 +97,6 @@ def tile_transposing():
     dfs(0, len(lookup)-1)
     return result[0]*2
 
-DIRECTIONS = [(1, 0), (0, 1), (-1, 0), (0, -1)]
+DIRECTIONS = ((1, 0), (0, 1), (-1, 0), (0, -1))
 for case in range(int(input())):
     print('Case #%d: %s' % (case+1, tile_transposing()))
