@@ -3,7 +3,7 @@
 # Meta Hacker Cup 2022 Final Round - Problem D. Alphabet Adventuring
 # https://www.facebook.com/codingcompetitions/hacker-cup/2022/final-round/problems/D
 #
-# Time:  O(R^2 * (N + Q) + Q * (R^2 + log(N + Q))* log(N + Q)), pass in PyPy3 but Python3
+# Time:  O(R^2 * (N + Q) + Q * (R^2 + log(N + Q))* log(N + Q))
 # Space: O(R^2 * (N + Q))
 #
 
@@ -12,7 +12,7 @@ from functools import partial
 # Template:
 # https://github.com/kamyu104/GoogleKickStart-2020/blob/main/Round%20D/locked_doors.py
 class TreeInfos(object):  # Time: O(NlogN), Space: O(NlogN), N is the number of nodes
-    def __init__(self, adj, edges):      
+    def __init__(self, adj, edges):
         def divide(u, p):
             def update_up(u, p):
                 if p == -1:
@@ -27,8 +27,6 @@ class TreeInfos(object):  # Time: O(NlogN), Space: O(NlogN), N is the number of 
                         continue
                     up[eid][c*26+par_c[p]] = eid
 
-            size[u] = 1
-            heavy_descent[u] = u  # added
             if p != -1:
                 P[u].append(p)  # ancestors of the node i
                 D[u] = D[p]+1
@@ -56,22 +54,26 @@ class TreeInfos(object):  # Time: O(NlogN), Space: O(NlogN), N is the number of 
                         continue
                     down[u][c*26+nc] = u
 
-            mx = 0
-            for v, c in adj[u]:
-                 if v == p:
-                     continue
-                 size[u] += size[v]
-                 if size[v] > mx:
-                    mx = size[v]
-                    heavy_descent[u], heavy_child[u], heavy_c[u] = heavy_descent[v], v, c
+            def update_heavy(u, p):
+                mx = 0
+                for v, c in adj[u]:
+                    if v == p:
+                        continue
+                    size[u] += size[v]
+                    if size[v] > mx:
+                        mx = size[v]
+                        heavy_descent[u], heavy_child[u], heavy_c[u] = heavy_descent[v], v, c
+
+            update_heavy(u, p)  # added
             update_down(u, p)  # added
 
         N = len(adj)
         D, P = [0]*N, [[] for _ in range(N)]
 
         # added
-        size, par_c, heavy_c, heavy_child, heavy_descent = [[-1]*N for _ in range(5)]
-        ancestor = list(range(N))
+        size = [1]*N
+        par_c, heavy_c, heavy_child = [[-1]*N for _ in range(3)]
+        heavy_descent, ancestor = list(range(N)), list(range(N))
         up = [None for _ in range(len(edges))]
         down = [None for _ in range(N)]
         edge_id = {(u, v): i for i, (u, v) in enumerate(edges)}
@@ -82,12 +84,12 @@ class TreeInfos(object):  # Time: O(NlogN), Space: O(NlogN), N is the number of 
             stk.pop()()
 
         self.adj = adj
-        self.edges = edges
         self.D, self.P = D, P
 
         # added
-        self.par_c, self.heavy_c, self.heavy_child, self.heavy_descent = par_c, heavy_c, heavy_child, heavy_descent
-        self.ancestor = ancestor
+        self.edges = edges
+        self.par_c, self.heavy_c, self.heavy_child = par_c, heavy_c, heavy_child
+        self.heavy_descent, self.ancestor = heavy_descent, ancestor
         self.up, self.down = up, down
         self.edge_id = edge_id
 
@@ -236,7 +238,7 @@ def alphabet_adventuring():
             tree.remove(u)
         else:
             u, k, alpha = args
-            result.append(tree.query(u, [k], alpha)+1)            
+            result.append(tree.query(u, [k], alpha)+1)
     result.reverse()
     return " ".join(map(str, result))
 
