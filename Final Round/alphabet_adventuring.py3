@@ -234,8 +234,7 @@ def alphabet_adventuring():
         else:
             u, k, alpha = args
             result.append(tree.query(u, k, alpha)+1)
-    result.reverse()
-    return " ".join(map(str, result))
+    return " ".join(map(str, reversed(result)))
 
 for case in range(int(input())):
     print('Case #%d: %s' % (case+1, alphabet_adventuring()))
