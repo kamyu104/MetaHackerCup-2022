@@ -164,8 +164,8 @@ class TreeInfos(object):  # Time: O(NlogN), Space: O(NlogN), N is the number of 
             if v == -1:
                 k[0] = 0
                 return u
-            u = v
             k[0] -= 1
+            u = v
             return u
 
         def go_down(u):
@@ -193,7 +193,7 @@ class TreeInfos(object):  # Time: O(NlogN), Space: O(NlogN), N is the number of 
                 if nv == -1:
                     return v
                 k[0] -= 1
-                u = v = nv
+                u = nv
             return u
 
         if not k[0]:
