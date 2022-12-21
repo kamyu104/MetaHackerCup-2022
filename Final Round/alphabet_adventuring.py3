@@ -134,25 +134,24 @@ class TreeInfos(object):  # Time: O(NlogN), Space: O(NlogN), N is the number of 
         def go_up(u, k):
             if not self.P[u]:
                 return u, k
+            p = self.P[u][0]
             for v, c in self.adj[u]:
-                if v == self.P[u][0] or v != self.ancestor[v]:
+                if v == p or v != self.ancestor[v]:
                     continue
                 if lookup[self.par_c[u]] > lookup[c]:
                     return u, k
             k0, u0 = k, u
-            if self.P[u]:
-                p = self.P[u][0]
-                eid, v = self.edge_id[u, p], 0
-                for pid in stops:
-                    _, nv = self.edges[self.__get_up_edge(eid, pid)]
-                    if self.D[nv] > self.D[v]:
-                        v = nv
-                diff = self.D[u]-self.D[v]
-                if k <= diff:
-                    u = binary_lift(u, k)
-                    return u, 0
-                k -= diff
-                u = v
+            eid, v = self.edge_id[u, p], 0
+            for pid in stops:
+                _, nv = self.edges[self.__get_up_edge(eid, pid)]
+                if self.D[nv] > self.D[v]:
+                    v = nv
+            diff = self.D[u]-self.D[v]
+            if k <= diff:
+                u = binary_lift(u, k)
+                return u, 0
+            k -= diff
+            u = v
             nu = binary_lift(u0, k0-k-1)
             v, c = -1, 26
             for nv, nc in self.adj[u]:
@@ -171,8 +170,8 @@ class TreeInfos(object):  # Time: O(NlogN), Space: O(NlogN), N is the number of 
                 if self.heavy_child[u] == -1:
                     break
                 v = self.heavy_descent[u]
-                for p in stops:
-                    nv = self.down[u][p]
+                for pid in stops:
+                    nv = self.down[u][pid]
                     if self.D[nv] < self.D[v]:
                         v = nv
                 v = self.__get_ancestor(v)
