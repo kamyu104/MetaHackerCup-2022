@@ -131,15 +131,15 @@ class TreeInfos(object):  # Time: O(NlogN), Space: O(NlogN), N is the number of 
                     u = self.P[u][i]
             return u
 
-        def go_up(u):
+        def go_up(u, k):
             if not self.P[u]:
-                return u
+                return u, k
             for v, c in self.adj[u]:
                 if v == self.P[u][0] or v != self.ancestor[v]:
                     continue
                 if lookup[self.par_c[u]] > lookup[c]:
-                    return u
-            k0, u0 = k[0], u
+                    return u, k
+            k0, u0 = k, u
             if self.P[u]:
                 p = self.P[u][0]
                 eid, v = self.edge_id[u, p], 0
@@ -148,13 +148,12 @@ class TreeInfos(object):  # Time: O(NlogN), Space: O(NlogN), N is the number of 
                     if self.D[nv] > self.D[v]:
                         v = nv
                 diff = self.D[u]-self.D[v]
-                if k[0] <= diff:
-                    u = binary_lift(u, k[0])
-                    k[0] = 0
-                    return u
-                k[0] -= diff
+                if k <= diff:
+                    u = binary_lift(u, k)
+                    return u, 0
+                k -= diff
                 u = v
-            nu = binary_lift(u0, k0-k[0]-1)
+            nu = binary_lift(u0, k0-k-1)
             v, c = -1, 26
             for nv, nc in self.adj[u]:
                 if (self.P[u] and nv == self.P[u][0]) or nv == nu or nv != self.ancestor[nv]:
@@ -162,14 +161,13 @@ class TreeInfos(object):  # Time: O(NlogN), Space: O(NlogN), N is the number of 
                 if lookup[nc] < c:
                     c, v = lookup[nc], nv
             if v == -1:
-                k[0] = 0
-                return u
-            k[0] -= 1
+                return u, 0
+            k -= 1
             u = v
-            return u
+            return u, k
 
-        def go_down(u):
-            while k[0]:
+        def go_down(u, k):
+            while k:
                 if self.heavy_child[u] == -1:
                     break
                 v = self.heavy_descent[u]
@@ -179,11 +177,10 @@ class TreeInfos(object):  # Time: O(NlogN), Space: O(NlogN), N is the number of 
                         v = nv
                 v = self.__get_ancestor(v)
                 diff = self.D[v]-self.D[u]
-                if k[0] <= diff:
-                    v = binary_lift(v, diff-k[0])
-                    k[0] = 0
-                    return v
-                k[0] -= diff
+                if k <= diff:
+                    v = binary_lift(v, diff-k)
+                    return v, 0
+                k -= diff
                 nv, nc = -1, 26
                 for nnv, nnc in self.adj[v]:
                     if (self.P[v] and nnv == self.P[v][0]) or nnv != self.ancestor[nnv]:
@@ -191,19 +188,17 @@ class TreeInfos(object):  # Time: O(NlogN), Space: O(NlogN), N is the number of 
                     if lookup[nnc] < nc:
                         nc, nv = lookup[nnc], nnv
                 if nv == -1:
-                    return v
-                k[0] -= 1
+                    return v, 0
+                k -= 1
                 u = nv
-            return u
+            return u, k
 
-        if not k[0]:
-            return u
         stops = [alpha[i]*26+alpha[j] for i in range(len(alpha)) for j in range(i+1, len(alpha))]
         lookup = [0]*26
         for i, c in enumerate(alpha):
             lookup[c] = i
-        u = go_up(u)
-        return go_down(u)
+        u, k = go_up(u, k)
+        return go_down(u, k)[0]
 
 def alphabet_adventuring():
     N = int(input())
@@ -238,7 +233,7 @@ def alphabet_adventuring():
             tree.remove(u)
         else:
             u, k, alpha = args
-            result.append(tree.query(u, [k], alpha)+1)
+            result.append(tree.query(u, k, alpha)+1)
     result.reverse()
     return " ".join(map(str, result))
 
