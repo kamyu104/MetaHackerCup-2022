@@ -3,8 +3,8 @@
 # Meta Hacker Cup 2022 Final Round - Problem D. Alphabet Adventuring
 # https://www.facebook.com/codingcompetitions/hacker-cup/2022/final-round/problems/D
 #
-# Time:  O(R^2 * (N + Q) + Q * (R^2 + log(N + Q))* log(N + Q))
-# Space: O(R^2 * (N + Q))
+# Time:  O((R^2 + log(N + Q)) * (N + Q) + Q * (R^2 + log(N + Q))* log(N + Q))
+# Space: O((R^2 + log(N + Q)) * (N + Q))
 #
 
 from functools import partial
