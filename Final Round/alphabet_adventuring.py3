@@ -124,7 +124,7 @@ class TreeInfos(object):  # Time: O(NlogN), Space: O(NlogN), N is the number of 
             pid = c*26+self.par_c[p]
             self.up[self.edge_id[v, p]][pid] = self.__get_up_edge(par_eid, pid)
 
-    def query(self, u, k, alpha):
+    def query(self, u, k, s):
         def binary_lift(u, k):
             for i in reversed(range(len(self.P[u]))):
                 if k&(1<<i):
@@ -138,7 +138,7 @@ class TreeInfos(object):  # Time: O(NlogN), Space: O(NlogN), N is the number of 
             for v, c in self.adj[u]:
                 if v == p or v != self.ancestor[v]:
                     continue
-                if lookup[self.par_c[u]] > lookup[c]:
+                if rank[self.par_c[u]] > rank[c]:
                     return u, k
             k0, u0 = k, u
             eid, v = self.edge_id[u, p], 0
@@ -157,8 +157,8 @@ class TreeInfos(object):  # Time: O(NlogN), Space: O(NlogN), N is the number of 
             for nv, nc in self.adj[u]:
                 if (self.P[u] and nv == self.P[u][0]) or nv == nu or nv != self.ancestor[nv]:
                     continue
-                if lookup[nc] < c:
-                    c, v = lookup[nc], nv
+                if rank[nc] < c:
+                    c, v = rank[nc], nv
             if v == -1:
                 return u, 0
             k -= 1
@@ -184,18 +184,18 @@ class TreeInfos(object):  # Time: O(NlogN), Space: O(NlogN), N is the number of 
                 for nnv, nnc in self.adj[v]:
                     if (self.P[v] and nnv == self.P[v][0]) or nnv != self.ancestor[nnv]:
                         continue
-                    if lookup[nnc] < nc:
-                        nc, nv = lookup[nnc], nnv
+                    if rank[nnc] < nc:
+                        nc, nv = rank[nnc], nnv
                 if nv == -1:
                     return v, 0
                 k -= 1
                 u = nv
             return u, k
 
-        stops = [alpha[i]*26+alpha[j] for i in range(len(alpha)) for j in range(i+1, len(alpha))]
-        lookup = [0]*26
-        for i, c in enumerate(alpha):
-            lookup[c] = i
+        stops = [s[i]*26+s[j] for i in range(len(s)) for j in range(i+1, len(s))]
+        rank = [0]*26
+        for i, c in enumerate(s):
+            rank[c] = i
         u, k = go_up(u, k)
         return go_down(u, k)[0]
 
@@ -231,8 +231,8 @@ def alphabet_adventuring():
             u = args[0]
             tree.remove(u)
         else:
-            u, k, alpha = args
-            result.append(tree.query(u, k, alpha)+1)
+            u, k, s = args
+            result.append(tree.query(u, k, s)+1)
     return " ".join(map(str, reversed(result)))
 
 for case in range(int(input())):
