@@ -33,12 +33,12 @@ class SegmentTree(object):
 
     def query(self, L, R, v):
         def _query(i, left, right, L, R, v):
-            while self.tree[i][1] and self.recs[self.tree[i][1][-1]][0] == -1:
+            while self.tree[i][1] and self.recs[self.tree[i][1][-1]][1] == -1:
                 self.tree[i][1].pop()
             if self.tree[i][1] and self.recs[self.tree[i][1][-1]][1] >= v:
                 return self.tree[i][1][-1]
             if (left, right) == (L, R):
-                while self.tree[i][0] and self.recs[self.tree[i][0][-1]][0] == -1:
+                while self.tree[i][0] and self.recs[self.tree[i][0][-1]][1] == -1:
                     self.tree[i][0].pop()
                 if self.tree[i][0] and self.recs[self.tree[i][0][-1]][1] >= v:
                     return self.tree[i][0][-1]
