@@ -221,13 +221,13 @@ def alphabet_adventuring():
             adj[v].append((u, c))
             edges.append((u, v))
             edges.append((v, u))
-            queries.append((0, (u,)))
+            queries.append((u,))
         else:
-            queries.append((1, (int(args[1])-1, int(args[2]), list(map(lambda x: ord(x)-ord('A'), args[3])))))
+            queries.append((int(args[1])-1, int(args[2]), list(map(lambda x: ord(x)-ord('A'), args[3]))))
     tree = TreeInfos(adj, edges)
     result = []
-    for t, args in reversed(queries):
-        if t == 0:
+    for args in reversed(queries):
+        if len(args) == 1:
             u = args[0]
             tree.remove(u)
         else:
