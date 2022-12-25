@@ -63,7 +63,7 @@ def cup_counterbalancing():
         a, b = [], []
         mn_a = mn_b = pi
         mx_a = mx_b = -pi
-        for x in angles:  # write verbosely to speed up performance
+        for x in angles:  # write verbosely to improve performance
             if x < 0:
                 if x < mn_a:
                     mn_a = x
