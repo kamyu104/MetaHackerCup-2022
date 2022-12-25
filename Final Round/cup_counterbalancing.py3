@@ -28,12 +28,6 @@ def div(a, v):
 def rotate(a, d):
     return [a[0]*cos(d)+a[1]*cos(pi/2+d), a[0]*sin(d)+a[1]*sin(pi/2+d)]
 
-def length_square(a):
-    return a[0]*a[0]+a[1]*a[1]
-
-def length(a):
-    return (a[0]*a[0]+a[1]*a[1])**0.5
-
 def angle(x):
     return atan2(x[1], x[0])
 
@@ -42,11 +36,12 @@ def inside_colinear_segment(s, p):
 
 def segment(a, b):
     d = sub(b, a)
-    return ((a, b), div(d, length(d)))
+    return ((a, b), div(d, inner_product(d, d)**0.5))
 
 def intersection(s, u, p, R_square):
     closet = add(s[0], mult(u, inner_product(sub(p, s[0]), u)))
-    d_square = length_square(sub(closet, p))
+    v = sub(p, closet)
+    d_square = inner_product(v, v)
     result = []
     if d_square <= R_square:
         l = (R_square-d_square)**0.5
