@@ -38,28 +38,28 @@ def segment(a, b):
     d = sub(b, a)
     return ((a, b), div(d, inner_product(d, d)**0.5))
 
+def intersection(s, u, p, R_square):
+    closet = add(s[0], mult(u, inner_product(sub(p, s[0]), u)))
+    v = sub(p, closet)
+    d_square = inner_product(v, v)
+    result = []
+    if d_square <= R_square:
+        l = (R_square-d_square)**0.5
+        if l == 0:
+            if inside_colinear_segment(s, closet):
+                result.append(closet)
+        else:
+            p1 = add(closet, mult(u, l))
+            if inside_colinear_segment(s, p1):
+                result.append(p1)
+            p2 = add(closet, mult(u, -l))
+            if inside_colinear_segment(s, p2):
+                result.append(p2)
+    return result
+
 def cup_counterbalancing():
     def check(p):  # Time: O(N)
-        def intersection(s, u):
-            closet = add(s[0], mult(u, inner_product(sub(p, s[0]), u)))
-            v = sub(p, closet)
-            d_square = inner_product(v, v)
-            result = []
-            if d_square <= R_square:
-                l = (R_square-d_square)**0.5
-                if l == 0:
-                    if inside_colinear_segment(s, closet):
-                        result.append(closet)
-                else:
-                    p1 = add(closet, mult(u, l))
-                    if inside_colinear_segment(s, p1):
-                        result.append(p1)
-                    p2 = add(closet, mult(u, -l))
-                    if inside_colinear_segment(s, p2):
-                        result.append(p2)
-            return result
-
-        angles = [angle(sub(x, p)) for s, u in segments for x in intersection(s, u)]
+        angles = [angle(sub(x, p)) for s, u in segments for x in intersection(s, u, p, R_square)]
         a, b = [], []
         mn_a = mn_b = pi
         mx_a = mx_b = -pi
