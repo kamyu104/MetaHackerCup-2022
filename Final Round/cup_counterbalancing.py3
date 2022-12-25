@@ -57,8 +57,8 @@ def intersection(s, u, p, R_square):
                 result.append(p2)
     return result
 
-def cup_counterbalancing():  # Time: O(N)
-    def check(p, R_square):
+def cup_counterbalancing():
+    def check(p, R_square):  # Time: O(N)
         angles = [angle(sub(x, p)) for s, u in segments for x in intersection(s, u, p, R_square)]
         a, b = [], []
         mn_a = mn_b = pi
