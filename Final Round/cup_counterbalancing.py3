@@ -44,12 +44,12 @@ def segment(a, b):
     d = sub(b, a)
     return ((a, b), div(d, length(d)))
 
-def intersection(s, u, p, R):
+def intersection(s, u, p, R_square):
     closet = add(s[0], mult(u, inner_product(sub(p, s[0]), u)))
-    d_sqaure = length_square(sub(closet, p))
+    d_square = length_square(sub(closet, p))
     result = []
-    if d_sqaure <= R**2:
-        l = (R**2-d_sqaure)**0.5
+    if d_square <= R_square:
+        l = (R_square-d_square)**0.5
         if l == 0:
             if inside_colinear_segment(s, closet):
                 result.append(closet)
@@ -63,8 +63,8 @@ def intersection(s, u, p, R):
     return result
 
 def cup_counterbalancing():  # Time: O(N)
-    def check(p, R):
-        angles = [angle(sub(x, p)) for s, u in segments for x in intersection(s, u, p, R)]
+    def check(p, R_square):
+        angles = [angle(sub(x, p)) for s, u in segments for x in intersection(s, u, p, R_square)]
         a, b = [], []
         mn_a = mn_b = pi
         mx_a = mx_b = -pi
@@ -84,6 +84,7 @@ def cup_counterbalancing():  # Time: O(N)
         return len(a) > 0 and len(b) > 0 and mn_b < mx_a+pi and mn_a+pi < mx_b
 
     N, R, L = map(int, input().split())
+    R_square = R**2
     points = [list(map(int, input().split())) for _ in range(N)]
     segments = [segment(points[i], points[(i+1)%len(points)]) for i in range(len(points))]
     u = mult(rotate((1, 0), random()*pi/4), L/SAMPLE**0.5)
@@ -99,7 +100,7 @@ def cup_counterbalancing():  # Time: O(N)
             while curr[0] <= L and curr[1] <= L:
                 if 0 <= curr[idx]:
                     found = True
-                    if check(curr, R):
+                    if check(curr, R_square):
                         good += 1
                     total += 1
                 i += 1
