@@ -55,6 +55,8 @@
 |E2| [Zero Crossings - Chapter 2](https://www.facebook.com/codingcompetitions/hacker-cup/2022/round-3/problems/E2)| [PyPy3](./Round%203/zero_crossings_chapter_2.py3) | _O((N * M) * log(N * M) + Q * log(N * M))_ | _O((N * M) * log(N * M)_ | Hard | | Online Solution, Geometry, Sort, Line Sweep, Persistent Treap, Binary Search, Tree, DFS, Hash |
 
 ## Final Round
+You can relive the magic of the 2022 Hacker Cup World Finals by watching the [Live Stream Recording](https://www.facebook.com/hackercup/videos/513912190802808) of the announcement of winners.
+
 | # | Title | Solution | Time | Space | Difficulty | Tag | Note |
 |---| ----- | -------- | ---- | ----- | ---------- | --- | ---- |
 |A| [ML Modeling](https://www.facebook.com/codingcompetitions/hacker-cup/2022/final-round/problems/A)| [PyPy3](./Final%20Round/ml_modeling.py3) | _O(MAX_X * MAX_Y * MAX_R * MIN_N + (MAX_X * MAX_Y)^2 + N)_ | _O(MAX_X * MAX_Y)_ | Medium | | Geometry, Sampling |
