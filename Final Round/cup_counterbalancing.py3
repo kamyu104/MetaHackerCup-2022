@@ -1,6 +1,6 @@
 # Copyright (c) 2022 kamyu. All rights reserved.
 #
-# Meta Hacker Cup 2022 Final Round - Problem F. Hazelnut Harvesting
+# Meta Hacker Cup 2022 Final Round - Problem F. Cup Counterbalancing
 # https://www.facebook.com/codingcompetitions/hacker-cup/2022/final-round/problems/F
 #
 # Time:  O(N * S), pass in PyPy3 but Python3
