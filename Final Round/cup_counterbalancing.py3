@@ -85,7 +85,7 @@ def cup_counterbalancing():  # Time: O(N)
     u = mult(rotate((1, 0), random()*pi/4), L/SAMPLE**0.5)
     v = [-u[1], u[0]]
     total = good = 0
-    for idx, j, d in ((0, 0, 1), (1, -1, -1)):
+    for idx, (j, d) in enumerate(((0, 1), (-1, -1))):
         start = [0, 0]
         found = True
         while found:
