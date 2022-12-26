@@ -140,7 +140,6 @@ class TreeInfos(object):  # Time: O(NlogN), Space: O(NlogN), N is the number of 
                     continue
                 if rank[self.par_c[u]] > rank[c]:
                     return u, k
-            k0, u0 = k, u
             eid, v = self.edge_id[u, p], 0
             for pid in stops:
                 _, nv = self.edges[self.__get_up_edge(eid, pid)]
@@ -151,11 +150,10 @@ class TreeInfos(object):  # Time: O(NlogN), Space: O(NlogN), N is the number of 
                 u = binary_lift(u, k)
                 return u, 0
             k -= diff
-            u = v
-            nu = binary_lift(u0, k0-k-1)
+            u, prev_u = v, binary_lift(u, diff-1)
             v, c = -1, 26
             for nv, nc in self.adj[u]:
-                if (self.P[u] and nv == self.P[u][0]) or nv == nu or nv != self.ancestor[nv]:
+                if (self.P[u] and nv == self.P[u][0]) or nv == prev_u or nv != self.ancestor[nv]:
                     continue
                 if rank[nc] < c:
                     c, v = rank[nc], nv
