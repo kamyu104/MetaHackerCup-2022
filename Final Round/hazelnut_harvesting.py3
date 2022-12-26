@@ -8,52 +8,52 @@
 #
 
 class SegmentTree(object):
-    def __init__(self, N, R):
+    def __init__(self, N, M):
         self.N = N
         self.tree = [[[], []] for _ in range(2*2**((N-1).bit_length()))]
-        self.recs = [None for _ in range(R)]
+        self.recs = [None for _ in range(M)]
 
-    def update(self, L, R, v):
-        def _update(i, left, right, L, R, v):
+    def update(self, l, r, v):
+        def _update(i, L, R, l, r, v):
             self.tree[i][0].append(v)
-            if (left, right) == (L, R):
+            if (L, R) == (l, r):
                 self.tree[i][1].append(v)
                 return
-            mid = left+(right-left)//2
-            if R <= mid:
-                _update(2*i, left, mid, L, R, v)
+            M = L+(R-L)//2
+            if r <= M:
+                _update(2*i, L, M, l, r, v)
                 return
-            if L >= mid+1:
-                _update(2*i+1, mid+1, right, L, R, v)
+            if l >= M+1:
+                _update(2*i+1, M+1, R, l, r, v)
                 return
-            _update(2*i, left, mid, L, mid, v)
-            _update(2*i+1, mid+1, right, mid+1, R, v)
+            _update(2*i, L, M, l, M, v)
+            _update(2*i+1, M+1, R, M+1, r, v)
 
-        return _update(1, 0, self.N-1, L, R, v)
+        return _update(1, 0, self.N-1, l, r, v)
 
-    def query(self, L, R, v):
-        def _query(i, left, right, L, R, v):
+    def query(self, l, r, v):
+        def _query(i, L, R, l, r, v):
             while self.tree[i][1] and self.recs[self.tree[i][1][-1]][1] == -1:
                 self.tree[i][1].pop()
             if self.tree[i][1] and self.recs[self.tree[i][1][-1]][1] >= v:
                 return self.tree[i][1][-1]
-            if (left, right) == (L, R):
+            if (L, R) == (l, r):
                 while self.tree[i][0] and self.recs[self.tree[i][0][-1]][1] == -1:
                     self.tree[i][0].pop()
                 if self.tree[i][0] and self.recs[self.tree[i][0][-1]][1] >= v:
                     return self.tree[i][0][-1]
                 return -1
-            mid = left+(right-left)//2
-            if R <= mid:
-                return _query(2*i, left, mid, L, R, v)
-            if L >= mid+1:
-                return _query(2*i+1, mid+1, right, L, R, v)
-            l = _query(2*i, left, mid, L, mid, v)
+            M = L+(R-L)//2
+            if r <= M:
+                return _query(2*i, L, M, l, r, v)
+            if l >= M+1:
+                return _query(2*i+1, M+1, R, l, r, v)
+            l = _query(2*i, L, M, l, M, v)
             if l != -1:
                 return l
-            return _query(2*i+1, mid+1, right, mid+1, R, v)
+            return _query(2*i+1, M+1, R, M+1, r, v)
 
-        return _query(1, 0, self.N-1, L, R, v)
+        return _query(1, 0, self.N-1, l, r, v)
 
     def update_rec(self, i, rec):
         self.recs[i] = rec
