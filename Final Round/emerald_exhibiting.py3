@@ -3,8 +3,8 @@
 # Meta Hacker Cup 2022 Final Round - Problem B. Emerald Exhibiting
 # https://www.facebook.com/codingcompetitions/hacker-cup/2022/final-round/problems/B
 #
-# Time:  O(P * logN), pass in PyPy3 but Python3
-# Space: O(P)
+# Time:  O(Nlog(logN)), pass in PyPy3 but Python3
+# Space: O(MAX_N)
 #
 
 def linear_sieve_of_eratosthenes(n):
