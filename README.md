@@ -13,6 +13,7 @@
 * [Round 2](https://github.com/kamyu104/MetaHackerCup-2022#round-2)
 * [Round 3](https://github.com/kamyu104/MetaHackerCup-2022#round-3)
 * [Final Round](https://github.com/kamyu104/MetaHackerCup-2022#final-round)
+* [Hacker Cup 2023](https://github.com/kamyu104/MetaHackerCup-2023)
 
 ## Qualification Round
 | # | Title | Solution | Time | Space | Difficulty | Tag | Note |
